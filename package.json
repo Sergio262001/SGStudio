@@ -1,13 +1,14 @@
 {
   "name": "sg-studio-portfolio",
-  "private": true,
   "version": "0.0.1",
+  "private": true,
   "type": "module",
+  "homepage": "https://sergio262001.github.io/SGStudio/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist -b gh-pages"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -17,6 +18,6 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",
     "gh-pages": "^6.3.0",
-    "vite": "^6.0.0"
+    "vite": "^6.4.1"
   }
 }
