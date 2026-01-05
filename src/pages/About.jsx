@@ -8,36 +8,37 @@ export default function About() {
         org: "Coderhouse",
         status: "Finalizado",
         desc: "Diseño de interfaces, UX, jerarquía visual y buenas prácticas.",
-        image: "/img/certificado/certificado-ux.png",
+        image: `${import.meta.env.BASE_URL}img/certificado/certificado-ux.png`,
       },
       {
         title: "Tendencias de marketing digital con certificaciones",
         org: "Fundación Universitaria Los Libertadores",
         status: "Finalizado",
         desc: "Seminario enfocado en tendencias y herramientas de marketing digital.",
-        image: "/img/certificado/certificado-uni1.png",
+        image: `${import.meta.env.BASE_URL}img/certificado/certificado-uni1.png`,
       },
       {
         title: "Spin-Off y Proyectos Creativos de Base Tecnológica",
         org: "Fundación Universitaria Los Libertadores",
         status: "Finalizado",
         desc: "Seminario de innovación, emprendimiento y proyectos tecnológicos.",
-        image: "/img/certificado/certificado-uni2.png",
+        image: `${import.meta.env.BASE_URL}img/certificado/certificado-uni2.png`,
       },
       {
         title: "JavaScript",
         org: "Coderhouse",
         status: "Cursando",
         desc: "Fundamentos, lógica, DOM y bases para proyectos frontend.",
-        image: "/img/certificado/certificado-js.webp",
+        image: `${import.meta.env.BASE_URL}img/certificado/certificado-js.webp`,
       },
       {
         title: "React",
         org: "Coderhouse",
         status: "Cursando",
         desc: "Componentes, props, state y estructura de proyectos modernos.",
-        image: "/img/certificado/certificado-react.png",
+        image: `${import.meta.env.BASE_URL}img/certificado/certificado-react.png`,
       },
+
     ],
     []
   );
@@ -83,7 +84,8 @@ export default function About() {
           {/* FOTO */}
           <div className="about-photo card1 glow">
             <img
-              src="/img/Sergio-Gil-fotoperfil.png"
+              src={`${import.meta.env.BASE_URL}img/Sergio-Gil-fotoperfil.png`}
+
               alt="Foto de perfil de Sergio Gil"
               loading="lazy"
             />

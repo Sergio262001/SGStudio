@@ -7,11 +7,12 @@ export default function Header() {
         
         {/* LOGO */}
         <div className="brand">
-          <img
-            src="img/logos/logoSG.png"
-            alt="SG Studio logo"
-            className="brand-logo"
-          />
+                  <img
+          src={`${import.meta.env.BASE_URL}img/logos/logoSG.png`}
+          alt="SG Studio logo"
+          className="brand-logo"
+        />
+
         </div>  
 
         {/* NAV */}
