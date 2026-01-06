@@ -42,8 +42,8 @@ export default function Home() {
               <li>React (en aprendizaje) · Vite</li>
               <li>Firebase (Auth · Hosting)</li>
               <li>Git · GitHub</li>
-              <li>MongoDB</li>
-              <li>Figma</li>
+              <li>Figma · Adobe Suite (Ps · Pr · Ai)</li>
+              <li>MongoDB (básico)</li>
             </ul>
           </div>
 

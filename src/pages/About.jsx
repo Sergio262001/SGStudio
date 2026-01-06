@@ -15,14 +15,14 @@ export default function About() {
         org: "Fundación Universitaria Los Libertadores",
         status: "Finalizado",
         desc: "Seminario enfocado en tendencias y herramientas de marketing digital.",
-        image: `${import.meta.env.BASE_URL}img/certificado/certificado-uni1.PNG`,
+        image: `${import.meta.env.BASE_URL}img/certificado/certificado-uni1.png`,
       },
       {
         title: "Spin-Off y Proyectos Creativos de Base Tecnológica",
         org: "Fundación Universitaria Los Libertadores",
         status: "Finalizado",
         desc: "Seminario de innovación, emprendimiento y proyectos tecnológicos.",
-        image: `${import.meta.env.BASE_URL}img/certificado/certificado-uni2.PNG`,
+        image: `${import.meta.env.BASE_URL}img/certificado/certificado-uni2.png`,
       },
       {
         title: "JavaScript",
@@ -101,7 +101,7 @@ export default function About() {
               <li>React (en aprendizaje) · Vite</li>
               <li>Firebase (Auth · Hosting)</li>
               <li>Git · GitHub</li>
-              <li>Figma · Adobe Suite</li>
+              <li>Figma · Adobe Suite (Ps · Pr · Ai)</li>
               <li>MongoDB (básico)</li>
             </ul>
           </div>
