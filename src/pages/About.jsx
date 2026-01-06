@@ -15,14 +15,14 @@ export default function About() {
         org: "Fundación Universitaria Los Libertadores",
         status: "Finalizado",
         desc: "Seminario enfocado en tendencias y herramientas de marketing digital.",
-        image: `${import.meta.env.BASE_URL}img/certificado/certificado-uni1.png`,
+        image: `${import.meta.env.BASE_URL}img/certificado/certificado-uni1.PNG`,
       },
       {
         title: "Spin-Off y Proyectos Creativos de Base Tecnológica",
         org: "Fundación Universitaria Los Libertadores",
         status: "Finalizado",
         desc: "Seminario de innovación, emprendimiento y proyectos tecnológicos.",
-        image: `${import.meta.env.BASE_URL}img/certificado/certificado-uni2.png`,
+        image: `${import.meta.env.BASE_URL}img/certificado/certificado-uni2.PNG`,
       },
       {
         title: "JavaScript",
