@@ -38,7 +38,6 @@ export default function About() {
         desc: "Componentes, props, state y estructura de proyectos modernos.",
         image: `${import.meta.env.BASE_URL}img/certificado/certificado-react.png`,
       },
-
     ],
     []
   );
@@ -48,29 +47,32 @@ export default function About() {
   return (
     <section className="section">
       <div className="container">
-        {/* TOP GRID: texto + foto */}
-        <div className="about-grid">
-          <div>
+        {/* ===== ABOUT LAYOUT (como el Home) ===== */}
+        <div className="about-layout">
+          {/* IZQUIERDA: TEXTO */}
+          <div className="about-top">
             <h1>Sobre mí</h1>
 
             <p>
               Soy <strong>Desarrollador Frontend Jr</strong> con formación en{" "}
-              <strong>diseño gráfico</strong> y conocimientos en <strong>UX/UI</strong>.
-              Me interesa especialmente el punto donde el diseño se convierte en algo
-              funcional: cuando una idea visual pasa a ser una interfaz real que las
-              personas pueden usar.
+              <strong>diseño gráfico</strong> y conocimientos en{" "}
+              <strong>UX/UI</strong>. Me interesa especialmente el punto donde el
+              diseño se convierte en algo funcional: cuando una idea visual pasa
+              a ser una interfaz real que las personas pueden usar.
             </p>
 
             <p>
               Trabajo principalmente con <strong>HTML, CSS y JavaScript</strong>,
               creando páginas web claras, responsivas y bien estructuradas.
-              Actualmente continúo aprendiendo <strong>React</strong>, aplicándolo
-              en proyectos personales para fortalecer mis bases como frontend.
+              Actualmente continúo aprendiendo <strong>React</strong>,
+              aplicándolo en proyectos personales para fortalecer mis bases como
+              frontend.
             </p>
 
             <p>
-              Mi background en diseño me permite cuidar el detalle visual, la jerarquía,
-              la tipografía y la experiencia de usuario, mientras sigo creciendo en el área técnica.
+              Mi background en diseño me permite cuidar el detalle visual, la
+              jerarquía, la tipografía y la experiencia de usuario, mientras sigo
+              creciendo en el área técnica.
             </p>
 
             <h2 className="subheading">Cómo trabajo y cómo aprendo</h2>
@@ -81,43 +83,33 @@ export default function About() {
             </ul>
           </div>
 
-          {/* FOTO */}
-          <div className="about-photo card1 glow">
-            <img
-              src={`${import.meta.env.BASE_URL}img/Sergio-Gil-fotoperfil.png`}
+          {/* DERECHA: CARDS */}
+          <div className="about-side">
+            <div className="card glow">
+              <h3>Stack actual</h3>
+              <ul className="bullets">
+                <li>HTML · CSS · JavaScript</li>
+                <li>React (en aprendizaje) · Vite</li>
+                <li>Firebase (Auth · Hosting)</li>
+                <li>Git · GitHub</li>
+                <li>Figma · Adobe Suite (Ps · Pr · Ai)</li>
+                <li>MongoDB (básico)</li>
+              </ul>
+            </div>
 
-              alt="Foto de perfil de Sergio Gil"
-              loading="lazy"
-            />
+            <div className="card glow">
+              <h3>En qué puedo ayudarte</h3>
+              <ul className="bullets">
+                <li>Landing pages y sitios informativos.</li>
+                <li>Webs para marcas personales y negocios.</li>
+                <li>Maquetación responsive y mejora visual.</li>
+                <li>Integraciones básicas con Firebase.</li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* BOTTOM GRID: stack + ayuda */}
-        <div className="about-bottom ">
-          <div className="card glow">
-            <h3>Stack actual</h3>
-            <ul className="bullets">
-              <li>HTML · CSS · JavaScript</li>
-              <li>React (en aprendizaje) · Vite</li>
-              <li>Firebase (Auth · Hosting)</li>
-              <li>Git · GitHub</li>
-              <li>Figma · Adobe Suite (Ps · Pr · Ai)</li>
-              <li>MongoDB (básico)</li>
-            </ul>
-          </div>
-
-          <div className="card glow">
-            <h3>En qué puedo ayudarte</h3>
-            <ul className="bullets">
-              <li>Landing pages y sitios informativos.</li>
-              <li>Webs para marcas personales y negocios.</li>
-              <li>Maquetación responsive y mejora visual.</li>
-              <li>Integraciones básicas con Firebase.</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* CERTIFICADOS */}
+        {/* ===== CERTIFICADOS ===== */}
         <div className="certs-section">
           <h2>Certificados</h2>
           <p className="section-intro">
@@ -133,13 +125,18 @@ export default function About() {
                 onClick={() => setOpenCert(cert)}
               >
                 <div className="cert-thumb">
-                  <img src={cert.image} alt={`Certificado: ${cert.title}`} loading="lazy" />
+                  <img
+                    src={cert.image}
+                    alt={`Certificado: ${cert.title}`}
+                    loading="lazy"
+                  />
                 </div>
 
                 <div className="cert-body">
                   <h3>{cert.title}</h3>
                   <p className="cert-org">
-                    {cert.org} · <span className="cert-status">{cert.status}</span>
+                    {cert.org} ·{" "}
+                    <span className="cert-status">{cert.status}</span>
                   </p>
                   <p className="cert-desc">{cert.desc}</p>
                   <span className="cert-cta">Ver certificado →</span>
@@ -149,7 +146,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* MODAL */}
+        {/* ===== MODAL ===== */}
         {openCert && (
           <div className="modal-overlay" onClick={() => setOpenCert(null)}>
             <div

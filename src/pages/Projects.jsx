@@ -4,8 +4,7 @@ export default function Projects() {
       <div className="container">
         <h1>Proyectos destacados</h1>
         <p className="section-intro">
-          Una selección de proyectos que combinan frontend, backend y
-          despliegues en la nube.
+         Proyectos personales y freelance donde aplico diseño, frontend y buenas prácticas para resolver necesidades reales,
         </p>
 
         <div className="grid-3">

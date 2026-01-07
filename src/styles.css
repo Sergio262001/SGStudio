@@ -512,8 +512,10 @@ a {
 .site-footer {
   border-top: 1px solid rgba(31, 41, 55, 0.9);
   padding: 16px 0 18px;
-  background: radial-gradient(circle at top, #020617, #020617 55%, #000 100%);
+  background: transparent; /* ✅ */
+  background: rgba(2, 6, 23, 0.35); /* ✅ suave, no reinicia */
 }
+
 
 .footer-inner {
   text-align: center;
@@ -798,5 +800,57 @@ a {
 @media (max-width: 600px) {
   .section {
     padding: 48px 0;
+  }
+}
+
+
+/* =====================================================
+   08) ABOUT (SIN FOTO / EN COLUMNA)
+   ===================================================== */
+
+/* YA NO USAMOS about-grid para el top.
+   Si por error queda en algún lado, lo neutralizamos: */
+.about-grid {
+  display: block;
+}
+
+/* Nuevo wrapper del texto */
+.about-top {
+  max-width: 760px; /* ajusta si lo quieres más ancho */
+}
+
+/* Los 2 cuadros debajo */
+.about-bottom {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.about-bottom { grid-template-columns: 1fr; }
+
+
+/* Responsive igual que antes */
+@media (max-width: 960px) {
+  .about-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.about-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+@media (max-width: 960px) {
+  .about-layout {
+    grid-template-columns: 1fr;
   }
 }
