@@ -11,17 +11,17 @@ export default function Projects() {
         <div className="grid-3">
           {/* Proyecto 1 */}
           <article className="card project-card glow">
-            <h2>Panel de monitoreo en AWS</h2>
+            <h2>WEB Hipnosis para sanar</h2>
 
             <div className="project-image">
               <img
                 src={`${import.meta.env.BASE_URL}img/proyectos/PROYECTO1.png`}
-                alt="Panel de monitoreo en AWS"
+                alt="WEB Hipnosis para sanar"
               />
             </div>
 
             {/* Espacio para link */}
-            <a href="#" className="btn btn-primary">
+            <a href="https://sergio262001.github.io/HipnosisParaSanar1/index.html" className="btn btn-primary">
               Ver proyecto
             </a>
           </article>
@@ -29,7 +29,7 @@ export default function Projects() {
 
           {/* Proyecto 2 */}
           <article className="card project-card glow">
-            <h2>E-commerce minimalista</h2>
+            <h2>E-commerce Great Value</h2>
 
             <div className="project-image">
               <img
@@ -38,14 +38,14 @@ export default function Projects() {
               />
             </div>
 
-            <a href="#" className="project-link">
+           <a href="https://sergio262001.github.io/furniture/pages/livingroom/livingroom.html" className="btn btn-primary">
               Ver proyecto
             </a>
           </article>
 
           {/* Proyecto 3 */}
           <article className="card project-card glow">
-            <h2>Landing page de alto rendimiento</h2>
+            <h2>Blog academico</h2>
 
             <div className="project-image">
               <img
@@ -54,7 +54,7 @@ export default function Projects() {
               />
             </div>
 
-            <a href="#" className="project-link">
+            <a href="https://conacedum.com/" className="btn btn-primary">
               Ver proyecto
             </a>
           </article>
@@ -70,7 +70,7 @@ export default function Projects() {
               />
             </div>
 
-            <a href="#" className="project-link">
+           <a href="https://sergio262001.github.io/SGpacks/" className="btn btn-primary">
               Ver proyecto
             </a>
           </article>
