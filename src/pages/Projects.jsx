@@ -21,13 +21,10 @@ export default function Projects() {
             </div>
 
             {/* Espacio para link */}
-            <div className="hero-actions">
-            <Link a href="#" className="btn btn-primary">
+            <a href="#" className="btn btn-primary">
               Ver proyecto
-            </Link>
+            </a>
           </article>
-
-        
           
 
           {/* Proyecto 2 */}
