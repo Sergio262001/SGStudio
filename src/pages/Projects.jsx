@@ -12,6 +12,14 @@ export default function Projects() {
         <div className="grid-3">
           <article className="card project-card glow">
             <h2>Panel de monitoreo en AWS</h2>
+
+            <div className="project-image">
+            <img
+              src={`${import.meta.env.BASE_URL}img/proyectos/PROYECTO1.png`}
+            />
+          </div>
+        </div>
+
             <p>
               Dashboard para visualizar métricas de infraestructura y costos,
               integrando servicios de AWS y visualizaciones personalizadas.
