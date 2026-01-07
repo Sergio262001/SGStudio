@@ -21,10 +21,14 @@ export default function Projects() {
             </div>
 
             {/* Espacio para link */}
-            <a href="#" className="project-link">
+            <div className="hero-actions">
+            <Link a href="#" className="btn btn-primary">
               Ver proyecto
-            </a>
+            </Link>
           </article>
+
+        
+          
 
           {/* Proyecto 2 */}
           <article className="card project-card glow">
