@@ -5,56 +5,73 @@ export default function Projects() {
         <h1>Proyectos destacados</h1>
         <p className="section-intro">
           Una selección de proyectos que combinan frontend, backend y
-          despliegues en la nube. La idea es mostrar cómo resuelvo problemas
-          reales con soluciones técnicas claras.
+          despliegues en la nube.
         </p>
 
         <div className="grid-3">
+          {/* Proyecto 1 */}
           <article className="card project-card glow">
             <h2>Panel de monitoreo en AWS</h2>
 
             <div className="project-image">
-            <img
-              src={`${import.meta.env.BASE_URL}img/proyectos/PROYECTO1.png`}
-            />
-          </div>
-        </div>
+              <img
+                src={`${import.meta.env.BASE_URL}img/proyectos/PROYECTO1.png`}
+                alt="Panel de monitoreo en AWS"
+              />
+            </div>
 
-            <p>
-              Dashboard para visualizar métricas de infraestructura y costos,
-              integrando servicios de AWS y visualizaciones personalizadas.
-            </p>
-            <ul className="project-meta">
-              <li>React · Vite</li>
-              <li>AWS Lambda · API Gateway</li>
-              <li>CloudWatch · S3</li>
-            </ul>
+            {/* Espacio para link */}
+            <a href="#" className="project-link">
+              Ver proyecto
+            </a>
           </article>
 
+          {/* Proyecto 2 */}
           <article className="card project-card glow">
-            <h2>E‑commerce minimalista</h2>
-            <p>
-              Frontend rápido con React y backend en Node.js, manejo de
-              autenticación, carrito, pasarela de pagos y panel de administración.
-            </p>
-            <ul className="project-meta">
-              <li>React · React Router</li>
-              <li>Node.js · Express</li>
-              <li>PostgreSQL · Stripe</li>
-            </ul>
+            <h2>E-commerce minimalista</h2>
+
+            <div className="project-image">
+              <img
+                src={`${import.meta.env.BASE_URL}img/proyectos/PROYECTO2.png`}
+                alt="E-commerce minimalista"
+              />
+            </div>
+
+            <a href="#" className="project-link">
+              Ver proyecto
+            </a>
           </article>
 
+          {/* Proyecto 3 */}
           <article className="card project-card glow">
             <h2>Landing page de alto rendimiento</h2>
-            <p>
-              Página optimizada para conversión, animaciones suaves y puntuación
-              alta en Lighthouse (performance, accesibilidad y SEO).
-            </p>
-            <ul className="project-meta">
-              <li>Vite · React</li>
-              <li>CSS moderno</li>
-              <li>Optimización de assets</li>
-            </ul>
+
+            <div className="project-image">
+              <img
+                src={`${import.meta.env.BASE_URL}img/proyectos/PROYECTO3.png`}
+                alt="Landing page de alto rendimiento"
+              />
+            </div>
+
+            <a href="#" className="project-link">
+              Ver proyecto
+            </a>
+          </article>
+
+          {/* Proyecto 4 */}
+          <article className="card project-card glow">
+            <h2>Proyecto experimental</h2>
+
+            <div className="project-image">
+              <img
+                src={`${import.meta.env.BASE_URL}img/proyectos/PROYECTO4.png`}
+                alt="Proyecto experimental"
+              />
+            </div>
+
+            <a href="#" className="project-link">
+              Ver proyecto
+            </a>
           </article>
         </div>
       </div>
