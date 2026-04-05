@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function About() {
   const certificates = useMemo(
@@ -45,146 +47,198 @@ export default function About() {
   const [openCert, setOpenCert] = useState(null);
 
   return (
-    <section className="section">
-      <div className="container">
-        {/* ===== ABOUT LAYOUT (como el Home) ===== */}
-        <div className="about-layout">
-          {/* IZQUIERDA: TEXTO */}
-          <div className="about-top">
-            <h1>Sobre mí</h1>
-
-            <p>
-              Soy <strong>Desarrollador Frontend Jr</strong> con formación en{" "}
-              <strong>diseño gráfico</strong> y conocimientos en{" "}
-              <strong>UX/UI</strong>. Me interesa especialmente el punto donde el
-              diseño se convierte en algo funcional: cuando una idea visual pasa
-              a ser una interfaz real que las personas pueden usar.
-            </p>
-
-            <p>
-              Trabajo principalmente con <strong>HTML, CSS y JavaScript</strong>,
-              creando páginas web claras, responsivas y bien estructuradas.
-              Actualmente continúo aprendiendo <strong>React</strong>,
-              aplicándolo en proyectos personales para fortalecer mis bases como
-              frontend.
-            </p>
-
-            <p>
-              Mi background en diseño me permite cuidar el detalle visual, la
-              jerarquía, la tipografía y la experiencia de usuario, mientras sigo
-              creciendo en el área técnica.
-            </p>
-
-            <h2 className="subheading">Cómo trabajo y cómo aprendo</h2>
-            <ul className="bullets">
-              <li>Diseño visual aplicado al desarrollo frontend.</li>
-              <li>Maquetación responsive y estructura clara.</li>
-              <li>Aprendizaje constante a través de proyectos reales.</li>
-            </ul>
-          </div>
-
-          {/* DERECHA: CARDS */}
-          <div className="about-side">
-            <div className="card glow">
-              <h3>Stack actual</h3>
-              <ul className="bullets">
-                <li>HTML · CSS · JavaScript</li>
-                <li>React (en aprendizaje) · Vite</li>
-                <li>Firebase (Auth · Hosting)</li>
-                <li>Git · GitHub</li>
-                <li>Figma · Adobe Suite (Ps · Pr · Ai)</li>
-                <li>MongoDB (básico)</li>
-              </ul>
-            </div>
-
-            <div className="card glow">
-              <h3>En qué puedo ayudarte</h3>
-              <ul className="bullets">
-                <li>Landing pages y sitios informativos.</li>
-                <li>Webs para marcas personales y negocios.</li>
-                <li>Maquetación responsive y mejora visual.</li>
-                <li>Integraciones básicas con Firebase.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* ===== CERTIFICADOS ===== */}
-        <div className="certs-section">
-          <h2>Certificados</h2>
-          <p className="section-intro">
-            Una selección de cursos y seminarios. (Click para ver el certificado.)
-          </p>
-
-          <div className="certs-grid">
-            {certificates.map((cert) => (
-              <button
-                key={cert.title}
-                type="button"
-                className="cert-card glow"
-                onClick={() => setOpenCert(cert)}
-              >
-                <div className="cert-thumb">
-                  <img
-                    src={cert.image}
-                    alt={`Certificado: ${cert.title}`}
-                    loading="lazy"
-                  />
-                </div>
-
-                <div className="cert-body">
-                  <h3>{cert.title}</h3>
-                  <p className="cert-org">
-                    {cert.org} ·{" "}
-                    <span className="cert-status">{cert.status}</span>
-                  </p>
-                  <p className="cert-desc">{cert.desc}</p>
-                  <span className="cert-cta">Ver certificado →</span>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* ===== MODAL ===== */}
-        {openCert && (
-          <div className="modal-overlay" onClick={() => setOpenCert(null)}>
-            <div
-              className="modal"
-              onClick={(e) => e.stopPropagation()}
-              role="dialog"
-              aria-modal="true"
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.4 }}
+    >
+      <Helmet>
+        <title>Sobre Mí | SG Studio</title>
+        <meta name="description" content="Conoce más sobre mi trayectoria como desarrollador frontend Jr., mis habilidades y mis certificaciones en UX/UI y React." />
+      </Helmet>
+      <section className="section">
+        <div className="container">
+          {/* ===== ABOUT LAYOUT (como el Home) ===== */}
+          <div className="about-layout">
+            {/* IZQUIERDA: TEXTO */}
+            <motion.div 
+              className="about-top"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 }}
             >
-              <div className="modal-header">
-                <div>
-                  <h3 className="modal-title">{openCert.title}</h3>
-                  <p className="modal-sub">
-                    {openCert.org} · {openCert.status}
-                  </p>
-                </div>
+              <h1>Sobre mí</h1>
 
-                <button
-                  className="modal-close"
-                  type="button"
-                  onClick={() => setOpenCert(null)}
-                  aria-label="Cerrar"
-                >
-                  ✕
-                </button>
-              </div>
+              <p>
+                Soy <strong>Desarrollador Frontend Jr</strong> con formación en{" "}
+                <strong>diseño gráfico</strong> y conocimientos en{" "}
+                <strong>UX/UI</strong>. Me interesa especialmente el punto donde el
+                diseño se convierte en algo funcional: cuando una idea visual pasa
+                a ser una interfaz real que las personas pueden usar.
+              </p>
 
-              <div className="modal-content">
-                <img
-                  className="modal-image"
-                  src={openCert.image}
-                  alt={`Certificado: ${openCert.title}`}
-                />
-                <p className="modal-desc">{openCert.desc}</p>
-              </div>
-            </div>
+              <p>
+                Trabajo principalmente con <strong>HTML, CSS y JavaScript</strong>,
+                creando páginas web claras, responsivas y bien estructuradas.
+                Actualmente continúo aprendiendo <strong>React</strong>,
+                aplicándolo en proyectos personales para fortalecer mis bases como
+                frontend.
+              </p>
+
+              <p>
+                Mi background en diseño me permite cuidar el detalle visual, la
+                jerarquía, la tipografía y la experiencia de usuario, mientras sigo
+                creciendo en el área técnica.
+              </p>
+
+              <h2 className="subheading">Cómo trabajo y cómo aprendo</h2>
+              <ul className="bullets">
+                <li>Diseño visual aplicado al desarrollo frontend.</li>
+                <li>Maquetación responsive y estructura clara.</li>
+                <li>Aprendizaje constante a través de proyectos reales.</li>
+              </ul>
+            </motion.div>
+
+            {/* DERECHA: CARDS */}
+            <motion.div 
+              className="about-side"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+                }
+              }}
+            >
+              <motion.div 
+                className="card glow"
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              >
+                <h3>Stack actual</h3>
+                <ul className="bullets">
+                  <li>HTML · CSS · JavaScript</li>
+                  <li>React (en aprendizaje) · Vite</li>
+                  <li>Firebase (Auth · Hosting)</li>
+                  <li>Git · GitHub</li>
+                  <li>Figma · Adobe Suite (Ps · Pr · Ai)</li>
+                  <li>MongoDB (básico)</li>
+                </ul>
+              </motion.div>
+
+              <motion.div 
+                className="card glow"
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              >
+                <h3>En qué puedo ayudarte</h3>
+                <ul className="bullets">
+                  <li>Landing pages y sitios informativos.</li>
+                  <li>Webs para marcas personales y negocios.</li>
+                  <li>Maquetación responsive y mejora visual.</li>
+                  <li>Integraciones básicas con Firebase.</li>
+                </ul>
+              </motion.div>
+            </motion.div>
           </div>
-        )}
-      </div>
-    </section>
+
+          {/* ===== CERTIFICADOS ===== */}
+          <motion.div 
+            className="certs-section"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2>Certificados</h2>
+            <p className="section-intro">
+              Una selección de cursos y seminarios. (Click para ver el certificado.)
+            </p>
+
+            <div className="certs-grid">
+              {certificates.map((cert) => (
+                <button
+                  key={cert.title}
+                  type="button"
+                  className="cert-card glow"
+                  onClick={() => setOpenCert(cert)}
+                >
+                  <div className="cert-thumb">
+                    <img
+                      src={cert.image}
+                      alt={`Certificado: ${cert.title}`}
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="cert-body">
+                    <h3>{cert.title}</h3>
+                    <p className="cert-org">
+                      {cert.org} ·{" "}
+                      <span className="cert-status">{cert.status}</span>
+                    </p>
+                    <p className="cert-desc">{cert.desc}</p>
+                    <span className="cert-cta">Ver certificado →</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ===== MODAL ===== */}
+          <AnimatePresence>
+            {openCert && (
+              <motion.div 
+                className="modal-overlay" 
+                onClick={() => setOpenCert(null)}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <motion.div
+                  className="modal"
+                  onClick={(e) => e.stopPropagation()}
+                  role="dialog"
+                  aria-modal="true"
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="modal-header">
+                    <div>
+                      <h3 className="modal-title">{openCert.title}</h3>
+                      <p className="modal-sub">
+                        {openCert.org} · {openCert.status}
+                      </p>
+                    </div>
+
+                    <button
+                      className="modal-close"
+                      type="button"
+                      onClick={() => setOpenCert(null)}
+                      aria-label="Cerrar"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <div className="modal-content">
+                    <img
+                      className="modal-image"
+                      src={openCert.image}
+                      alt={`Certificado: ${openCert.title}`}
+                    />
+                    <p className="modal-desc">{openCert.desc}</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </section>
+    </motion.div>
   );
 }
