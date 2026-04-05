@@ -20,9 +20,9 @@
   --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.4);
 
   /* Glow system tuning */
-  --glow-alpha: 0.28;
-  --glow-border: rgba(139, 123, 255, 0.4);
-  --glow-shadow: rgba(110, 86, 255, 0.15);
+  --glow-alpha: 0.15;
+  --glow-border: rgba(139, 123, 255, 0.25);
+  --glow-shadow: rgba(110, 86, 255, 0.05);
   --glow-title: #bbaeff;
 }
 
