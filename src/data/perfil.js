@@ -7,7 +7,9 @@ export const PERFIL = {
   rol: "DevOps Junior · Desarrollador web",
   frase: "Automatizo, despliego y diseño productos web que funcionan.",
   resumen:
-    "Diseñador gráfico y desarrollador web en transición a DevOps. Construyo pipelines de CI/CD, trabajo con contenedores e infraestructura como código, y aporto una base sólida en UX/UI y frontend.",
+    "Webmaster en el sector público y desarrollador web en transición a DevOps. Construyo pipelines de CI/CD, trabajo con contenedores e infraestructura como código, y aporto una base sólida en UX/UI y frontend.",
+  // Empleo actual: se muestra en la portada y encabeza la experiencia del CV
+  actual: { cargo: "Webmaster", lugar: "Ministerio de Salud y Protección Social" },
 
   links: {
     github: "https://github.com/Sergio262001",
@@ -25,7 +27,11 @@ export const PERFIL = {
   habilidades: [
     {
       grupo: "DevOps y nube",
-      items: ["Docker", "GitHub Actions (CI/CD)", "Kubernetes (básico)", "Terraform (básico)", "Argo CD · GitOps", "Prometheus"],
+      items: ["Docker", "GitHub Actions (CI/CD)", "AWS (iniciando)", "Linux y Bash (aprendiendo)", "Kubernetes (básico)", "Terraform (básico)", "Argo CD · GitOps"],
+    },
+    {
+      grupo: "Portales web",
+      items: ["SharePoint", "Gestión de contenidos", "Mantenimiento de sitios institucionales"],
     },
     {
       grupo: "Desarrollo web",
@@ -42,6 +48,15 @@ export const PERFIL = {
   ],
 
   experiencia: [
+    {
+      cargo: "Webmaster",
+      lugar: "Ministerio de Salud y Protección Social",
+      periodo: "2026 – Actualidad",
+      logros: [
+        "Publicación y actualización de contenidos del portal web institucional en SharePoint.",
+        "Soporte y mantenimiento del sitio web.",
+      ],
+    },
     {
       cargo: "Desarrollador web y diseñador UX/UI",
       lugar: "SG Studio · Freelance",
@@ -79,6 +94,7 @@ export const PERFIL = {
     { titulo: "Diseño UX/UI Avanzado", lugar: "Coderhouse", periodo: "2024" },
     { titulo: "JavaScript", lugar: "Coderhouse", periodo: "En curso · 2026" },
     { titulo: "React", lugar: "Coderhouse", periodo: "En curso · 2026" },
+    { titulo: "AWS Cloud Practitioner", lugar: "AWS Skill Builder", periodo: "Iniciando · 2026" },
   ],
 
   // Recorrido para «Sobre mí» (de lo creativo a lo técnico)
@@ -86,6 +102,7 @@ export const PERFIL = {
     { etapa: "Publicidad y mercadeo", texto: "Entender a las personas y los negocios.", anio: "2024" },
     { etapa: "Diseño gráfico y UX/UI", texto: "Diseñar interfaces claras y accesibles.", anio: "2024–2025" },
     { etapa: "Desarrollo web freelance", texto: "Construir y publicar sitios para clientes reales.", anio: "Actualidad" },
+    { etapa: "Webmaster · Ministerio de Salud", texto: "Mantener un portal público de alcance nacional.", anio: "2026" },
     { etapa: "DevOps", texto: "Automatizar pruebas, seguridad y despliegues.", anio: "2026" },
   ],
 };

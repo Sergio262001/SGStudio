@@ -55,6 +55,10 @@ export default function Home() {
             <motion.p className="hero-subtitle" variants={subir}>
               {PERFIL.frase} Vengo del diseño: cuido cómo se ve y cómo funciona.
             </motion.p>
+            <motion.p className="hero-now" variants={subir}>
+              <span className="hero-now-k">Actualmente</span>
+              {PERFIL.actual.cargo} · {PERFIL.actual.lugar}
+            </motion.p>
             <motion.div className="hero-actions" variants={subir}>
               <Link to="/proyectos" className="btn btn-primary btn-lg">
                 Ver proyectos

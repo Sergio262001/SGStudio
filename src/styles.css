@@ -2365,7 +2365,7 @@ button:focus-visible,
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
   position: relative;
 }
@@ -2706,9 +2706,48 @@ button:focus-visible,
   .cv-role {
     font-size: 12pt;
   }
+
+  /* Formación y cursos en una sola línea: «Título · Institución» */
+  .cv-item-row .cv-place {
+    display: inline;
+  }
+
+  .cv-item-row .cv-place::before {
+    content: " · ";
+  }
+
+  .cv-item-row strong {
+    display: inline;
+  }
+
+  .cv-item-row + .cv-item-row {
+    margin-top: 3px;
+  }
 }
 
 /* La portada no necesita tanto aire bajo el hero */
 .section.hero {
   padding-bottom: 16px;
+}
+
+/* Cargo actual en la portada */
+.hero-now {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0 0;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  font-weight: 500;
+}
+
+.hero-now-k {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4ade80;
 }
