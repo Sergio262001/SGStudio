@@ -7,7 +7,7 @@ export const PERFIL = {
   rol: "DevOps Junior · Desarrollador web",
   frase: "Automatizo, despliego y diseño productos web que funcionan.",
   resumen:
-    "Desarrollador web en transición a DevOps, con experiencia como webmaster en el sector público. Construyo pipelines de CI/CD, trabajo con contenedores e infraestructura como código, y aporto una base sólida en UX/UI y frontend.",
+    "Desarrollador web y diseñador UX/UI en transición a DevOps, con experiencia como webmaster en el sector público. Automatizo pruebas y despliegues con GitHub Actions y Docker, y publico mis proyectos con demos en vivo. Busco mi primer rol como DevOps Junior.",
   // Experiencia destacada en la portada (sin «actualmente»: sigue siendo cierta después de terminar)
   actual: { cargo: "Webmaster", lugar: "Ministerio de Salud y Protección Social" },
 
@@ -53,8 +53,8 @@ export const PERFIL = {
       lugar: "Ministerio de Salud y Protección Social",
       periodo: "2026",
       logros: [
-        "Publicación y actualización de contenidos del portal web institucional, de alcance nacional, en SharePoint.",
-        "Soporte y mantenimiento del sitio web.",
+        "Gestión y publicación de contenidos del portal institucional, de alcance nacional, en SharePoint.",
+        "Soporte y mantenimiento del sitio web institucional.",
       ],
     },
     {
@@ -62,10 +62,10 @@ export const PERFIL = {
       lugar: "SG Studio · Freelance",
       periodo: "Actualidad",
       logros: [
-        "Menús digitales con QR para restaurantes, cafés y bares, con panel de administración.",
-        "Landing pages, sitios informativos y tiendas online para negocios y marcas personales.",
-        "Publicación en GitHub Pages y Firebase Hosting, con control de versiones en Git.",
-        "Autenticación y datos con Firebase y Supabase.",
+        "Diseño y desarrollo de menús digitales con QR para restaurantes, cafés y bares, con panel de administración.",
+        "Desarrollo de landing pages, sitios informativos y tiendas online para negocios y marcas personales.",
+        "Despliegue en GitHub Pages y Firebase Hosting, con control de versiones en Git.",
+        "Autenticación y bases de datos con Firebase y Supabase.",
       ],
     },
   ],
@@ -73,7 +73,7 @@ export const PERFIL = {
   proyectosCv: [
     {
       nombre: "Plataforma de entrega progresiva con GitOps",
-      detalle: "Pipeline en GitHub Actions con pruebas, políticas OPA, SBOM y firma de imágenes; despliegue canary con Argo Rollouts y rollback automático; infraestructura en Terraform.",
+      detalle: "Pipeline CI/CD en GitHub Actions con pruebas, políticas OPA, SBOM y firma de imágenes, que despliega con canary y rollback automático (Argo Rollouts); infraestructura definida en Terraform.",
     },
     {
       nombre: "Canary Lab",
