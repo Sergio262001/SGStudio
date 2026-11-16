@@ -174,3 +174,7 @@ kbd { font: 0.85rem ui-monospace, Consolas, monospace; background: var(--panel-2
   .report-card, .conclusion { background: #fff; border-color: #bbb; color: #111; }
   .lead, .meta, .note-small, .eyebrow { color: #444; }
 }
+
+/* Enlace de regreso al portafolio (solo cuando el prototipo se abre fuera de él) */
+.back-link { color: var(--accent-strong); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; white-space: nowrap; }
+.back-link:hover { border-color: var(--accent-strong); }

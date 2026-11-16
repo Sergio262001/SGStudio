@@ -154,6 +154,9 @@ function pageAyuda() {
   ${footer}`;
 }
 
+// Dentro del portafolio (iframe) el enlace «← Portafolio» sobra: el visor ya tiene su botón de volver.
+if (window.self !== window.top) document.querySelectorAll("[data-solo-fuera]").forEach((el) => (el.hidden = true));
+
 // ---------- Rutas ----------
 
 const ROUTES = {
