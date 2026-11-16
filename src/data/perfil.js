@@ -97,6 +97,11 @@ export const PERFIL = {
     { titulo: "AWS Cloud Practitioner", lugar: "AWS Skill Builder", periodo: "Iniciando · 2026" },
   ],
 
+  idiomas: [
+    { idioma: "Español", nivel: "Nativo" },
+    { idioma: "Inglés", nivel: "Básico" },
+  ],
+
   // Recorrido para «Sobre mí» (de lo creativo a lo técnico)
   camino: [
     { etapa: "Publicidad y mercadeo", texto: "Entender a las personas y los negocios.", anio: "2024" },

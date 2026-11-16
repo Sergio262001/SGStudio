@@ -60,6 +60,10 @@ export default function CV() {
                     <dd>{h.items.join(" · ")}</dd>
                   </div>
                 ))}
+                <div>
+                  <dt>Idiomas</dt>
+                  <dd>{PERFIL.idiomas.map((i) => `${i.idioma} (${i.nivel.toLowerCase()})`).join(" · ")}</dd>
+                </div>
               </dl>
             </section>
 
