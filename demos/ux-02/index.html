@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel de escenarios | Prototipo</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Saltar al contenido</a>
+  <header class="topbar">
+    <h1>Panel de simulación de escenarios</h1>
+    <p class="sub">Mueve los parámetros y compara hasta 3 escenarios guardados.</p>
+  </header>
+
+  <div class="layout">
+    <aside class="panel" aria-labelledby="h-params">
+      <h2 id="h-params">Parámetros</h2>
+      <div class="presets" role="group" aria-label="Escenarios predefinidos" id="presets"></div>
+      <form id="params" autocomplete="off" onsubmit="return false"></form>
+      <div class="actions">
+        <button type="button" class="primary" id="btn-save">Guardar escenario</button>
+        <button type="button" id="btn-reset">Restablecer</button>
+      </div>
+      <p class="hint" id="save-hint"></p>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <section aria-labelledby="h-kpi">
+        <h2 id="h-kpi" class="sr-only">Resumen del escenario actual</h2>
+        <div class="kpis" id="kpis"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-chart">
+        <div class="chart-head">
+          <h2 id="h-chart">Evolución</h2>
+          <div class="controls">
+            <div class="seg" role="group" aria-label="Métrica" id="metrics"></div>
+            <div class="seg" role="group" aria-label="Vista">
+              <button type="button" data-view="chart" aria-pressed="true">Gráfico</button>
+              <button type="button" data-view="table" aria-pressed="false">Tabla</button>
+            </div>
+          </div>
+        </div>
+        <div id="legend" class="legend"></div>
+        <div id="chart-wrap"></div>
+        <p id="readout" class="readout" aria-live="polite"></p>
+      </section>
+
+      <section class="panel" aria-labelledby="h-cmp">
+        <h2 id="h-cmp">Comparación</h2>
+        <div class="scroll" id="compare"></div>
+      </section>
+    </main>
+  </div>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
