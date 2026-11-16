@@ -61,7 +61,7 @@ export default function About() {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.35 }}>
       <Helmet>
-        <title>Sobre mí | SG Studio</title>
+        <title>Sobre mí | Sergio Gil</title>
         <meta name="description" content={PERFIL.resumen} />
       </Helmet>
 

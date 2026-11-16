@@ -14,7 +14,7 @@ export default function Ver() {
   return (
     <div className="viewer">
       <Helmet>
-        <title>{`${p.titulo} | SG Studio`}</title>
+        <title>{`${p.titulo} | Sergio Gil`}</title>
         <meta name="description" content={p.resumen} />
       </Helmet>
 

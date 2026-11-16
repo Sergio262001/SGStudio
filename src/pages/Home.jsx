@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import Terminal from "../components/Terminal";
 import ProjectCard from "../components/proyectos/ProjectCard";
+import { Escribeme } from "../components/Correo";
 import { PERFIL } from "../data/perfil";
 import { DESTACADOS_INICIO } from "../data/proyectos";
 
@@ -35,7 +36,7 @@ export default function Home() {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
       <Helmet>
-        <title>Sergio Gil · DevOps Junior y desarrollador web | SG Studio</title>
+        <title>Sergio Gil · DevOps Junior y desarrollador web</title>
         <meta name="description" content={`${PERFIL.rol}. ${PERFIL.frase}`} />
       </Helmet>
 
@@ -55,14 +56,21 @@ export default function Home() {
             <motion.p className="hero-subtitle" variants={subir}>
               {PERFIL.frase} Vengo del diseño: cuido cómo se ve y cómo funciona.
             </motion.p>
-            <motion.p className="hero-now" variants={subir}>
-              <span className="hero-now-k">Experiencia</span>
-              {PERFIL.actual.cargo} · {PERFIL.actual.lugar}
-            </motion.p>
+            <motion.dl className="hero-facts" variants={subir}>
+              <div>
+                <dt>Experiencia</dt>
+                <dd>{PERFIL.actual.cargo} · {PERFIL.actual.lugar}</dd>
+              </div>
+              <div>
+                <dt>Ubicación</dt>
+                <dd>{PERFIL.ubicacion}</dd>
+              </div>
+            </motion.dl>
             <motion.div className="hero-actions" variants={subir}>
               <Link to="/proyectos" className="btn btn-primary btn-lg">
                 Ver proyectos
               </Link>
+              <Escribeme />
               <Link to="/cv" className="btn btn-outline btn-lg">
                 Ver mi CV
               </Link>
@@ -122,8 +130,8 @@ export default function Home() {
             <h2>¿Buscas un DevOps Junior con ojo de diseño?</h2>
             <p>Automatizo con cuidado por el detalle y por quien usa el producto.</p>
             <div className="hero-actions">
-              <Link to="/cv" className="btn btn-primary btn-lg">Ver mi CV</Link>
-              <Link to="/contacto" className="btn btn-outline btn-lg">Hablemos</Link>
+              <Escribeme className="btn btn-primary btn-lg" />
+              <Link to="/cv" className="btn btn-outline btn-lg">Ver mi CV</Link>
             </div>
           </motion.div>
         </div>

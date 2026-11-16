@@ -13,7 +13,7 @@ export default function Projects() {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.35 }}>
       <Helmet>
-        <title>Proyectos | SG Studio</title>
+        <title>Proyectos | Sergio Gil</title>
         <meta name="description" content="Proyectos de DevOps, prototipos navegables de UX/UI y sitios web publicados." />
       </Helmet>
 

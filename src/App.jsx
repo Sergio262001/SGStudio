@@ -9,7 +9,6 @@ import Projects from "./pages/Projects";
 import CaseStudy from "./pages/CaseStudy";
 import Ver from "./pages/Ver";
 import CV from "./pages/CV";
-import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 
@@ -49,7 +48,8 @@ export default function App() {
             <Route path="/ver/:id" element={<Ver />} />
             <Route path="/cv" element={<CV />} />
             <Route path="/casos" element={<Navigate to="/proyectos" replace />} />
-            <Route path="/servicios" element={<Services />} />
+            {/* Servicios se retiró (un solo público: reclutadores). Los enlaces viejos llevan a Contacto. */}
+            <Route path="/servicios" element={<Navigate to="/contacto" replace />} />
             <Route path="/sobre-mi" element={<About />} />
             <Route path="/contacto" element={<Contact />} />
             <Route path="*" element={<Navigate to="/" replace />} />

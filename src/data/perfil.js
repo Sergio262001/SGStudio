@@ -1,6 +1,6 @@
 // Datos del perfil: una sola fuente para Inicio, Sobre mí, CV, Contacto y pie de página.
-// Correo, teléfono y ciudad NO se publican aquí a propósito (datos privados).
-// Si decides mostrarlos, completa `contacto` y aparecerán en Contacto y en el CV.
+// El teléfono NO se publica a propósito (evita llamadas y mensajes de spam).
+// El correo se arma al ejecutar la página, para que los robots que recolectan correos no lo lean tal cual.
 
 export const PERFIL = {
   nombre: "Sergio Gil",
@@ -19,15 +19,17 @@ export const PERFIL = {
   },
 
   contacto: {
-    email: null,
+    email: ["sagilt26", "gmail.com"].join("@"),
     telefono: null,
-    ciudad: null,
+    ciudad: "Bogotá",
   },
+  // Lo primero que filtran los reclutadores: dónde estás y cómo puedes trabajar
+  ubicacion: "Bogotá, Colombia · Presencial, híbrido o remoto",
 
   habilidades: [
     {
-      grupo: "DevOps y nube",
-      items: ["Docker", "GitHub Actions (CI/CD)", "AWS (iniciando)", "Linux y Bash (aprendiendo)", "Kubernetes (básico)", "Terraform (básico)", "Argo CD · GitOps"],
+      grupo: "DevOps y nube (en formación)",
+      items: ["Docker", "GitHub Actions (CI/CD)", "AWS", "Linux y Bash", "Terraform", "Kubernetes", "Argo CD · GitOps", "Prometheus"],
     },
     {
       grupo: "Portales web",

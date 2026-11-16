@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { PERFIL } from "../data/perfil";
 
+// Un solo público (reclutadores): sin Servicios, y con tu nombre a la vista.
 const ENLACES = [
   { to: "/", label: "Inicio", end: true },
   { to: "/proyectos", label: "Proyectos" },
   { to: "/sobre-mi", label: "Sobre mí" },
   { to: "/cv", label: "CV" },
-  { to: "/servicios", label: "Servicios" },
   { to: "/contacto", label: "Contacto", cta: true },
 ];
 
@@ -22,8 +23,12 @@ export default function Header() {
   return (
     <header className={`site-header ${abierto ? "menu-abierto" : ""}`}>
       <div className="container header-inner">
-        <NavLink to="/" className="brand" aria-label="SG Studio, ir al inicio">
-          <img src={`${import.meta.env.BASE_URL}img/logos/logoSG.png`} alt="" className="brand-logo" />
+        <NavLink to="/" className="brand" aria-label={`${PERFIL.nombre}, ir al inicio`}>
+          <img src={`${import.meta.env.BASE_URL}img/logos/sg-simbolo.png`} alt="" className="brand-simbolo" />
+          <span className="brand-texto">
+            <strong>{PERFIL.nombre}</strong>
+            <small>DevOps Junior</small>
+          </span>
         </NavLink>
 
         <button

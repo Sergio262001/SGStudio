@@ -13,7 +13,7 @@ export default function CaseStudy() {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.35 }}>
       <Helmet>
-        <title>{`${caso.titulo} | Caso de estudio | SG Studio`}</title>
+        <title>{`${caso.titulo} | Caso de estudio | Sergio Gil`}</title>
         <meta name="description" content={caso.resumen} />
       </Helmet>
 

@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import { Escribeme } from "../components/Correo";
 import { PERFIL } from "../data/perfil";
 
 const PDF = `${import.meta.env.BASE_URL}cv/CV-Sergio-Gil-DevOps-Junior.pdf`;
@@ -21,7 +21,7 @@ export default function CV() {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.35 }}>
       <Helmet>
-        <title>CV · Sergio Gil · DevOps Junior | SG Studio</title>
+        <title>CV · Sergio Gil · DevOps Junior</title>
         <meta name="description" content={`Hoja de vida de ${PERFIL.nombre}: ${PERFIL.rol}.`} />
       </Helmet>
 
@@ -29,14 +29,14 @@ export default function CV() {
         <div className="container cv-wrap">
           <div className="cv-toolbar no-print">
             <h1 className="sr-only">Hoja de vida</h1>
-            {/* PDF real (funciona bien en celulares); se genera desde esta misma página, sin datos privados */}
+            {/* PDF real (funciona bien en celulares); se genera desde esta misma página, sin el teléfono */}
             <a className="btn btn-primary btn-lg" href={PDF} download="CV Sergio Gil - DevOps Junior.pdf">
               ⬇ Descargar PDF
             </a>
             <button type="button" className="btn btn-outline btn-lg" onClick={() => window.print()}>
               Imprimir
             </button>
-            <Link to="/contacto" className="btn btn-outline btn-lg">Contactar</Link>
+            <Escribeme />
           </div>
 
           <article className="cv" aria-label={`Hoja de vida de ${PERFIL.nombre}`}>
