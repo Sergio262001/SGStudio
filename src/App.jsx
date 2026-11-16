@@ -1,11 +1,10 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-import Casos from "./pages/Casos";
 import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -22,7 +21,7 @@ export default function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/proyectos" element={<Projects />} />
-            <Route path="/casos" element={<Casos />} />
+            <Route path="/casos" element={<Navigate to="/proyectos" replace />} />
             <Route path="/servicios" element={<Services />} />
             <Route path="/sobre-mi" element={<About />} />
             <Route path="/contacto" element={<Contact />} />

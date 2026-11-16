@@ -35,8 +35,8 @@ export default function Home() {
               <Link to="/proyectos" className="btn btn-primary">
                 Ver proyectos
               </Link>
-              <Link to="/casos" className="btn btn-outline">
-                Casos de estudio UX/UI y DevOps
+              <Link to="/proyectos?cat=ux" className="btn btn-outline">
+                Ver prototipos UX/UI
               </Link>
               <Link to="/contacto" className="btn btn-outline">
                 Hablemos de tu web

@@ -29,12 +29,6 @@ export default function Header() {
             Proyectos
           </NavLink>
 
-          <NavLink to="/casos" className={({ isActive }) =>
-            "nav-link" + (isActive ? " nav-link-active" : "")
-          }>
-            Casos
-          </NavLink>
-
           <NavLink to="/servicios" className={({ isActive }) =>
             "nav-link" + (isActive ? " nav-link-active" : "")
           }>

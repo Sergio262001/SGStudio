@@ -143,11 +143,17 @@ function renderMain() {
 
 // ---------- Gráfico ----------
 
-const W = 760, H = 340, L = 64, R = 16, T = 14, B = 38;
+// El gráfico se dibuja al ancho real del contenedor (1 unidad = 1 px), así el texto
+// de los ejes mantiene su tamaño legible en móvil en vez de escalarse hacia abajo.
+let W = 760, H = 340;
+const L = 64, R = 16, T = 14, B = 38;
 let ctx = null;
 
 function chartHTML() {
   const m = METRICS[state.metric];
+  const avail = $("#chart-wrap").clientWidth || 760;
+  W = Math.round(Math.max(300, Math.min(900, avail)));
+  H = W < 520 ? 260 : 340;
   const maxMes = Math.max(...series.map((s) => s.rows.length));
   const values = series.flatMap((s) => s.rows.map(m.get));
   const { min, max, ticks } = niceScale(Math.min(0, ...values), Math.max(0, ...values));
@@ -155,7 +161,9 @@ function chartHTML() {
   const y = (v) => T + (1 - (v - min) / (max - min)) * (H - T - B);
   ctx = { maxMes, x, y, m };
 
-  const step = maxMes <= 12 ? 1 : maxMes <= 36 ? 3 : maxMes <= 60 ? 6 : 12;
+  // Paso de las marcas del eje X según el espacio disponible (~42 px por marca como mínimo).
+  const maxTicks = Math.max(3, Math.floor((W - L - R) / 42));
+  const step = [1, 2, 3, 6, 12, 24].find((s) => maxMes / s <= maxTicks) ?? 24;
   const xTicks = [];
   for (let mes = 1; mes <= maxMes; mes++) if (mes === 1 || mes % step === 0) xTicks.push(mes);
 
@@ -326,6 +334,16 @@ document.addEventListener("keydown", (e) => {
   else return;
   updateCursor();
 });
+
+// Redibujar el gráfico si cambia el ancho disponible (rotar el móvil, redimensionar ventana).
+let lastWidth = 0;
+new ResizeObserver(([entry]) => {
+  const w = Math.round(entry.contentRect.width);
+  if (Math.abs(w - lastWidth) > 8 && state.view === "chart") {
+    lastWidth = w;
+    renderMain();
+  }
+}).observe($("#chart-wrap"));
 
 load();
 buildParams();
