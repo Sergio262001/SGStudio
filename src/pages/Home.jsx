@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Terminal from "../components/Terminal";
 import ProjectCard from "../components/proyectos/ProjectCard";
 import { PERFIL } from "../data/perfil";
-import { PROYECTOS } from "../data/proyectos";
+import { DESTACADOS_INICIO } from "../data/proyectos";
 
 const AREAS = [
   {
@@ -30,7 +30,7 @@ const AREAS = [
 const subir = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } };
 
 export default function Home() {
-  const destacados = PROYECTOS.filter((p) => p.ver);
+  const destacados = DESTACADOS_INICIO;
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>

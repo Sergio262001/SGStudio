@@ -130,6 +130,14 @@ export const UX = [
 // ---------- Desarrollo web: sitios publicados (se abren aparte) ----------
 
 export const WEB = [
+  {
+    titulo: "Pa'l Toque · Tienda online",
+    etiqueta: "Desarrollo web · En producción",
+    resumen: "Tienda de camisetas para conciertos en Bogotá: preventas por edición, pasarela de pagos, rastreo de pedidos y chat con IA.",
+    imagen: img("paltoque-card.jpg"),
+    alt: "Tienda Pa'l Toque con los diseños de la edición",
+    url: "https://pal-toque.com/",
+  },
   { titulo: "Web Hipnosis para sanar", imagen: img("PROYECTO1.png"), alt: "Captura de la web Hipnosis para sanar", url: "https://sergio262001.github.io/HipnosisParaSanar1/index.html" },
   { titulo: "E-commerce Great Value", imagen: img("PROYECTO2.png"), alt: "Captura del e-commerce de muebles", url: "https://sergio262001.github.io/furniture/pages/livingroom/livingroom.html" },
   { titulo: "Blog académico", imagen: img("PROYECTO3.png"), alt: "Captura del blog académico", url: "https://conacedum.com/" },
@@ -153,3 +161,6 @@ export const PROYECTOS = [
 // Proyectos que se pueden abrir dentro del visor y tienen caso de estudio.
 export const CASOS = Object.fromEntries([DEVOPS, ...UX].map((p) => [p.id, p]));
 export const DESTACADOS = [DEVOPS, ...UX];
+
+// Proyectos de la portada: el simulador DevOps, la tienda real en producción y un prototipo UX.
+export const DESTACADOS_INICIO = ["Canary Lab", "Pa'l Toque", "Formix"].map((t) => PROYECTOS.find((p) => p.titulo.startsWith(t)));

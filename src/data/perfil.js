@@ -72,12 +72,12 @@ export const PERFIL = {
 
   proyectosCv: [
     {
-      nombre: "Plataforma de entrega progresiva con GitOps",
-      detalle: "Pipeline CI/CD en GitHub Actions con pruebas, políticas OPA, SBOM y firma de imágenes, que despliega con canary y rollback automático (Argo Rollouts); infraestructura definida en Terraform.",
+      nombre: "Pa'l Toque (pal-toque.com)",
+      detalle: "Tienda online en producción de camisetas para conciertos: preventas por edición, pasarela de pagos, rastreo de pedidos y chat de atención automatizado con IA.",
     },
     {
-      nombre: "Canary Lab",
-      detalle: "Simulador web interactivo que muestra cómo cada capa del pipeline detiene un cambio defectuoso.",
+      nombre: "Plataforma de entrega progresiva con GitOps",
+      detalle: "Pipeline CI/CD en GitHub Actions con pruebas, políticas OPA, SBOM y firma de imágenes, que despliega con canary y rollback automático (Argo Rollouts); infraestructura en Terraform. Incluye Canary Lab, un simulador web interactivo del flujo.",
     },
     {
       nombre: "Formix y Escenaria",
