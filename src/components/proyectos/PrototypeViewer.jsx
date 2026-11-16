@@ -43,7 +43,7 @@ export default function PrototypeViewer({ caso }) {
               key={vista}
               title={`Prototipo interactivo: ${caso.titulo}`}
               src={src}
-              sandbox="allow-scripts allow-same-origin"
+              sandbox="allow-scripts allow-same-origin allow-modals"
             />
           ) : (
             <button type="button" className="proto-poster" onClick={() => setActivo(true)}>

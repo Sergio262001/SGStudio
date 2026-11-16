@@ -1,81 +1,17 @@
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { useSearchParams } from "react-router-dom";
-import { CATEGORIAS, UX, WEB, DEVOPS } from "../data/proyectos";
-import UxCase from "../components/proyectos/UxCase";
+import { Link, useSearchParams } from "react-router-dom";
+import { CATEGORIAS, PROYECTOS } from "../data/proyectos";
 
 const aparecer = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
-function SeccionTitulo({ id, titulo, texto }) {
-  return (
-    <div className="proj-section-head">
-      <h2 id={id}>{titulo}</h2>
-      {texto && <p className="muted">{texto}</p>}
-    </div>
-  );
-}
-
-function DevopsCase() {
-  return (
-    <article className="card ux-case" aria-labelledby="t-devops">
-      <header className="ux-head">
-        <span className="pill">DevOps · 01</span>
-        <h3 id="t-devops">{DEVOPS.titulo}</h3>
-        <p className="ux-sub">{DEVOPS.subtitulo}</p>
-      </header>
-
-      <div className="ux-split">
-        <div className="ux-box">
-          <h4>El reto</h4>
-          <p>{DEVOPS.reto}</p>
-        </div>
-        <div className="ux-box ux-box-accent">
-          <h4>La solución</h4>
-          <p>{DEVOPS.solucion}</p>
-        </div>
-      </div>
-
-      <h4 className="ux-process-title">Así viaja un cambio hasta producción</h4>
-      <ol className="pipeline" aria-label="Pasos del flujo de entrega">
-        {DEVOPS.pipeline.map(([nombre, detalle]) => (
-          <li key={nombre}>
-            <strong>{nombre}</strong>
-            <span>{detalle}</span>
-          </li>
-        ))}
-      </ol>
-
-      <h4 className="ux-process-title">Qué incluye</h4>
-      <ul className="bullets">
-        {DEVOPS.puntos.map((p) => (
-          <li key={p}>{p}</li>
-        ))}
-      </ul>
-
-      <ul className="tag-list" aria-label="Tecnologías">
-        {DEVOPS.herramientas.map((h) => (
-          <li key={h} className="pill">{h}</li>
-        ))}
-      </ul>
-
-      <p className="ux-next">{DEVOPS.estado}</p>
-
-      <div className="ux-actions">
-        <a className="btn btn-primary" href={DEVOPS.repo} target="_blank" rel="noopener noreferrer">
-          Ver código en GitHub
-        </a>
-      </div>
-    </article>
-  );
-}
-
 export default function Projects() {
   const [params, setParams] = useSearchParams();
   const cat = CATEGORIAS.some((c) => c.id === params.get("cat")) ? params.get("cat") : "todos";
-  const ver = (id) => cat === "todos" || cat === id;
+  const lista = PROYECTOS.filter((p) => cat === "todos" || p.cat === cat);
 
   const elegir = (id) => setParams(id === "todos" ? {} : { cat: id }, { replace: true });
 
@@ -90,7 +26,7 @@ export default function Projects() {
         <title>Proyectos | SG Studio</title>
         <meta
           name="description"
-          content="Soluciones de UX/UI con prototipos web que puedes probar, sitios web publicados y un proyecto DevOps."
+          content="Prototipos web navegables de UX/UI, sitios web publicados y un proyecto DevOps."
         />
       </Helmet>
 
@@ -100,8 +36,8 @@ export default function Projects() {
             Proyectos
           </motion.h1>
           <p className="section-intro">
-            Soluciones de UX/UI con prototipos web que puedes probar aquí mismo, sitios web publicados y un proyecto
-            de DevOps. Cada uno parte de un problema real.
+            Prototipos web navegables de UX/UI, sitios publicados y un proyecto de DevOps. Abre cualquiera con
+            «Ver proyecto», o lee cómo lo resolví en «Caso de estudio».
           </p>
 
           <div className="filtros" role="group" aria-label="Filtrar proyectos por tipo">
@@ -112,59 +48,41 @@ export default function Projects() {
             ))}
           </div>
 
-          {ver("ux") && (
-            <section className="proj-section" aria-labelledby="sec-ux">
-              <SeccionTitulo
-                id="sec-ux"
-                titulo="UX/UI · Soluciones con prototipo"
-                texto="Del problema al prototipo navegable. Pulsa «Probar el prototipo» para usarlo en escritorio o en móvil."
-              />
-              <div className="ux-list">
-                {UX.map((caso, i) => (
-                  <UxCase key={caso.id} caso={caso} numero={i + 1} />
-                ))}
-              </div>
-            </section>
-          )}
+          <p className="sr-only" role="status">
+            {`${lista.length} proyectos`}
+          </p>
 
-          {ver("web") && (
-            <section className="proj-section" aria-labelledby="sec-web">
-              <SeccionTitulo
-                id="sec-web"
-                titulo="Desarrollo web"
-                texto="Sitios personales y freelance publicados, donde aplico diseño, frontend y buenas prácticas."
-              />
-              <motion.div
-                className="grid-3"
-                initial="hidden"
-                animate="visible"
-                variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-              >
-                {WEB.map((p) => (
-                  <motion.article key={p.titulo} className="card project-card glow" variants={aparecer}>
-                    <h3 className="web-title">{p.titulo}</h3>
-                    <div className="project-image">
-                      <img src={p.imagen} alt={p.alt} loading="lazy" />
-                    </div>
-                    <a href={p.url} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                      Ver proyecto
-                    </a>
-                  </motion.article>
-                ))}
-              </motion.div>
-            </section>
-          )}
+          <motion.div
+            key={cat}
+            className="grid-3 proj-grid"
+            initial="hidden"
+            animate="visible"
+            variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
+          >
+            {lista.map((p) => (
+              <motion.article key={p.titulo} className="card project-card glow" variants={aparecer}>
+                <span className={`pill card-pill card-pill-${p.cat}`}>{p.etiqueta}</span>
+                <h2>{p.titulo}</h2>
 
-          {ver("devops") && (
-            <section className="proj-section" aria-labelledby="sec-devops">
-              <SeccionTitulo
-                id="sec-devops"
-                titulo="DevOps"
-                texto="Automatización de pruebas, seguridad y despliegue."
-              />
-              <DevopsCase />
-            </section>
-          )}
+                <div className="project-image">
+                  <img src={p.imagen} alt={p.alt} loading="lazy" />
+                </div>
+
+                {p.resumen && <p className="project-desc">{p.resumen}</p>}
+
+                <div className="card-buttons">
+                  <a href={p.url} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    {p.urlTexto ?? "Ver proyecto"}
+                  </a>
+                  {p.caso && (
+                    <Link to={`/proyectos/${p.caso}`} className="btn btn-outline">
+                      Caso de estudio
+                    </Link>
+                  )}
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
         </div>
       </section>
     </motion.div>

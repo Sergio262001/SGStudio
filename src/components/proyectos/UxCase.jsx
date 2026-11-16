@@ -1,15 +1,15 @@
 import PrototypeViewer from "./PrototypeViewer";
 import Wireframe from "./Wireframe";
 
-// Caso UX/UI completo: reto → prototipo → proceso (problema, flujo, boceto, decisiones, validación).
-export default function UxCase({ caso, numero }) {
-  const tituloId = `t-${caso.id}`;
+const BASE = import.meta.env.BASE_URL;
 
+// Caso de estudio UX/UI (página de detalle): reto → prototipo navegable → proceso.
+export default function UxCase({ caso }) {
   return (
-    <article className="card ux-case" aria-labelledby={tituloId}>
+    <article className="card ux-case" aria-labelledby={`t-${caso.id}`}>
       <header className="ux-head">
-        <span className="pill">Caso UX/UI · {String(numero).padStart(2, "0")}</span>
-        <h3 id={tituloId}>{caso.titulo}</h3>
+        <span className="pill">Caso de estudio · UX/UI</span>
+        <h1 id={`t-${caso.id}`}>{caso.titulo}</h1>
         <p className="ux-sub">{caso.subtitulo}</p>
         <dl className="ux-meta">
           <div>
@@ -21,25 +21,35 @@ export default function UxCase({ caso, numero }) {
             <dd>{caso.herramientas.join(" · ")}</dd>
           </div>
         </dl>
+        <div className="ux-actions ux-actions-top">
+          <a className="btn btn-primary" href={`${BASE}demos/${caso.demo}/index.html`} target="_blank" rel="noopener noreferrer">
+            Ver proyecto en pantalla completa
+          </a>
+          <a className="btn btn-outline" href={caso.repo} target="_blank" rel="noopener noreferrer">
+            Ver código y documentación
+          </a>
+        </div>
       </header>
 
       <div className="ux-split">
         <div className="ux-box">
-          <h4>El reto</h4>
+          <h2>El reto</h2>
           <p>{caso.reto}</p>
         </div>
         <div className="ux-box ux-box-accent">
-          <h4>La solución</h4>
+          <h2>La solución</h2>
           <p>{caso.solucion}</p>
         </div>
       </div>
 
+      <h2 className="ux-process-title">Prototipo navegable</h2>
+      <p className="muted ux-hint">Recorre todas sus páginas desde el menú del prototipo, en vista de escritorio o de móvil.</p>
       <PrototypeViewer caso={caso} />
 
-      <h4 className="ux-process-title">El proceso</h4>
+      <h2 className="ux-process-title">El proceso</h2>
       <ol className="ux-process">
         <li>
-          <h5>Entender el problema</h5>
+          <h3>Entender el problema</h3>
           <ul className="bullets">
             {caso.dolores.map((d) => (
               <li key={d}>{d}</li>
@@ -48,7 +58,7 @@ export default function UxCase({ caso, numero }) {
         </li>
 
         <li>
-          <h5>Flujo de la persona usuaria</h5>
+          <h3>Flujo de la persona usuaria</h3>
           <ol className="ux-flow">
             {caso.flujo.map((paso) => (
               <li key={paso}>{paso}</li>
@@ -57,21 +67,21 @@ export default function UxCase({ caso, numero }) {
         </li>
 
         <li>
-          <h5>Del boceto al diseño final</h5>
+          <h3>Del boceto al diseño final</h3>
           <div className="ux-compare">
             <figure>
               <Wireframe tipo={caso.wireframe} />
               <figcaption>Wireframe de baja fidelidad</figcaption>
             </figure>
             <figure>
-              <img src={caso.capturas.escritorio} alt={`Diseño final de ${caso.titulo}`} loading="lazy" />
+              <img src={caso.capturas.app} alt={`Diseño final de ${caso.titulo}`} loading="lazy" />
               <figcaption>Diseño final, funcionando</figcaption>
             </figure>
           </div>
         </li>
 
         <li>
-          <h5>Decisiones de diseño</h5>
+          <h3>Decisiones de diseño</h3>
           <div className="ux-decisions">
             {caso.decisiones.map(([titulo, texto]) => (
               <div key={titulo} className="ux-decision">
@@ -83,7 +93,7 @@ export default function UxCase({ caso, numero }) {
         </li>
 
         <li>
-          <h5>Validación</h5>
+          <h3>Validación</h3>
           <ul className="bullets">
             {caso.validacion.map((v) => (
               <li key={v}>{v}</li>
@@ -92,12 +102,6 @@ export default function UxCase({ caso, numero }) {
           <p className="ux-next">{caso.siguiente}</p>
         </li>
       </ol>
-
-      <div className="ux-actions">
-        <a className="btn btn-outline" href={caso.repo} target="_blank" rel="noopener noreferrer">
-          Ver código y documentación
-        </a>
-      </div>
     </article>
   );
 }

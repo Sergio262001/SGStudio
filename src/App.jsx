@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
+import CaseStudy from "./pages/CaseStudy";
 import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -21,6 +22,7 @@ export default function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/proyectos" element={<Projects />} />
+            <Route path="/proyectos/:id" element={<CaseStudy />} />
             <Route path="/casos" element={<Navigate to="/proyectos" replace />} />
             <Route path="/servicios" element={<Services />} />
             <Route path="/sobre-mi" element={<About />} />

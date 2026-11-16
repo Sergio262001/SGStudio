@@ -17,14 +17,16 @@ export const CATEGORIAS = [
 export const UX = [
   {
     id: "ux-01",
-    titulo: "Constructor visual de formularios",
+    titulo: "Formix · Constructor de formularios",
+    resumen: "Sitio web navegable para crear formularios con preguntas que aparecen solo cuando hacen falta, con plantillas y modo simulación.",
+    imagen: img("ux-01-card.jpg"),
     subtitulo: "Crear formularios con reglas condicionales y probarlos antes de publicarlos.",
     rol: "Investigación, diseño UX/UI y prototipado funcional",
     herramientas: ["HTML", "CSS", "JavaScript", "Accesibilidad WCAG 2.2"],
     reto:
       "Los equipos que arman formularios (soporte, RR. HH., ventas) necesitan preguntas que aparezcan solo en ciertos casos. Hoy esas reglas son difíciles de ver, y nadie puede probar el formulario hasta publicarlo.",
     solucion:
-      "Un constructor de tres zonas: campos disponibles, el formulario y sus propiedades. Las reglas se leen en lenguaje natural sobre cada campo, y un modo «Simular» permite usar el formulario real, con validación y vista móvil, antes de publicarlo.",
+      "Formix, un sitio con inicio, plantillas, editor, «Mis formularios» y ayuda. El editor tiene tres zonas: campos disponibles, el formulario y sus propiedades. Las reglas se leen en lenguaje natural sobre cada campo, y un modo «Simular» permite usar el formulario real, con validación y vista móvil, antes de publicarlo.",
     dolores: [
       "Las reglas condicionales no se ven: hay que abrir cada campo para entender el formulario.",
       "No hay forma de probar el resultado antes de publicarlo.",
@@ -38,29 +40,31 @@ export const UX = [
       ["Errores que se entienden", "Las reglas circulares se marcan en el campo; al enviar, el foco va al primer error."],
       ["Sin miedo a equivocarse", "Deshacer y rehacer en todo momento (Ctrl+Z / Ctrl+Y)."],
     ],
-    flujo: ["Agrega campos", "Define reglas", "Simula el formulario", "Corrige errores", "Publica"],
+    flujo: ["Elige una plantilla", "Agrega campos", "Define reglas", "Simula el formulario", "Guarda en Mis formularios"],
     validacion: [
       "10 pruebas automáticas de la lógica de reglas y validación",
-      "19 comprobaciones en navegador real (agregar, reordenar, deshacer, simular, móvil)",
+      "53 comprobaciones en navegador real: navegación entre páginas, plantillas, guardar, reordenar, deshacer, simular y móvil",
       "Revisión de accesibilidad: teclado, foco visible, mensajes para lectores de pantalla",
     ],
     siguiente: "Siguiente paso: pruebas de usabilidad con 5 personas que creen formularios en su trabajo.",
     wireframe: "ux-01",
     demo: "ux-01",
-    url: "constructor-formularios.app",
-    capturas: { escritorio: img("ux-01-escritorio.jpg"), movil: img("ux-01-movil.jpg") },
+    url: "formix.app",
+    capturas: { escritorio: img("ux-01-escritorio.jpg"), movil: img("ux-01-movil.jpg"), app: img("ux-01-app.jpg") },
     repo: `${REPO}/ux-01-constructor-formularios`,
   },
   {
     id: "ux-02",
-    titulo: "Panel de simulación de escenarios",
+    titulo: "Escenaria · Simulación de escenarios",
+    resumen: "Sitio web navegable para comparar decisiones: panel interactivo, informe en lenguaje claro y explicación del modelo.",
+    imagen: img("ux-02-card.jpg"),
     subtitulo: "Comparar decisiones moviendo parámetros y ver el resultado al instante.",
     rol: "Diseño UX/UI, visualización de datos y prototipado funcional",
     herramientas: ["HTML", "CSS", "JavaScript", "SVG", "Visualización accesible"],
     reto:
       "Para decidir, una persona necesita comparar escenarios: ¿qué pasa si crecemos más rápido pero gastamos más? Los paneles habituales muestran un solo estado y obligan a anotar cifras a mano para comparar.",
     solucion:
-      "Un panel donde cada parámetro se ajusta con un deslizador o escribiendo el valor. Los resultados se recalculan al instante, y se pueden guardar hasta tres escenarios para verlos juntos en el gráfico y en una tabla que marca la mejor opción.",
+      "Escenaria, un sitio con inicio, panel, informe y explicación del modelo. En el panel, cada parámetro se ajusta con un deslizador o escribiendo el valor. Los resultados se recalculan al instante, y se pueden guardar hasta tres escenarios para verlos juntos en el gráfico y en una tabla que marca la mejor opción.",
     dolores: [
       "Comparar escenarios exige copiar cifras a una hoja aparte.",
       "Los gráficos con varias líneas dependen solo del color y confunden.",
@@ -74,17 +78,17 @@ export const UX = [
       ["Gráfico accesible", "Se recorre mes a mes con las flechas, y la vista Tabla muestra los mismos datos."],
       ["Decisión clara", "En la comparación, la mejor opción de cada fila lleva ★ y el texto «mejor»."],
     ],
-    flujo: ["Elige un punto de partida", "Ajusta parámetros", "Guarda el escenario", "Compara", "Decide"],
+    flujo: ["Elige un punto de partida", "Ajusta parámetros", "Guarda escenarios", "Compara en el panel", "Comparte el informe"],
     validacion: [
       "10 pruebas automáticas del modelo de simulación",
-      "20 comprobaciones en navegador real (parámetros, escenarios, teclado, tabla, móvil)",
+      "44 comprobaciones en navegador real: navegación, parámetros, escenarios, informe, teclado, tabla y móvil",
       "Fluido a ~60 cuadros por segundo con 120 meses y 4 escenarios",
     ],
     siguiente: "Siguiente paso: pruebas con personas que toman decisiones de presupuesto, midiendo tiempo y aciertos al comparar.",
     wireframe: "ux-02",
     demo: "ux-02",
-    url: "panel-escenarios.app",
-    capturas: { escritorio: img("ux-02-escritorio.jpg"), movil: img("ux-02-movil.jpg") },
+    url: "escenaria.app",
+    capturas: { escritorio: img("ux-02-escritorio.jpg"), movil: img("ux-02-movil.jpg"), app: img("ux-02-app.jpg") },
     repo: `${REPO}/ux-02-panel-escenarios`,
   },
 ];
@@ -123,6 +127,8 @@ export const WEB = [
 export const DEVOPS = {
   id: "devops-01",
   titulo: "Plataforma de entrega progresiva con GitOps",
+  resumen: "Cada cambio se prueba, se firma y llega a producción poco a poco, con vuelta atrás automática si algo falla.",
+  imagen: img("devops-01-card.jpg"),
   subtitulo: "Cada cambio se prueba, se firma y llega a producción poco a poco, con vuelta atrás automática.",
   reto: "Desplegar a mano, sin pruebas automáticas ni forma rápida de volver atrás, es lento y arriesgado.",
   solucion:
@@ -148,3 +154,12 @@ export const DEVOPS = {
     "Estado: la API, su imagen de contenedor y la sintaxis de los manifiestos están verificadas. La infraestructura está definida como código, pero aún no se ha desplegado en un clúster real.",
   repo: `${REPO}/devops-01-plataforma-entrega`,
 };
+
+// Lista única para la cuadrícula de la página Proyectos (mismo formato de tarjeta para todos).
+export const PROYECTOS = [
+  ...UX.map((p) => ({ cat: "ux", etiqueta: "UX/UI · Prototipo navegable", titulo: p.titulo, resumen: p.resumen, imagen: p.imagen, alt: `Página de inicio de ${p.titulo}`, url: `${BASE}demos/${p.demo}/index.html`, caso: p.id })),
+  ...WEB.map((p) => ({ cat: "web", etiqueta: "Desarrollo web", ...p })),
+  { cat: "devops", etiqueta: "DevOps", titulo: DEVOPS.titulo, resumen: DEVOPS.resumen, imagen: DEVOPS.imagen, alt: "Diagrama del flujo de entrega", url: DEVOPS.repo, urlTexto: "Ver código", caso: DEVOPS.id },
+];
+
+export const CASOS = Object.fromEntries([...UX.map((p) => [p.id, { tipo: "ux", data: p }]), [DEVOPS.id, { tipo: "devops", data: DEVOPS }]]);

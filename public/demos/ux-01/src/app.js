@@ -2,35 +2,41 @@ import {
   FIELD_TYPES, OPERATORS, newField, visibleIds, detectCycles, validate,
   insertField, moveField, removeField, History,
 } from "./rules.js";
+import { TEMPLATES } from "./templates.js";
+import { saveForm } from "./forms-store.js";
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const esc = (s) =>
   String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-// Formulario de ejemplo: ya demuestra reglas condicionales encadenadas.
-const SAMPLE = [
-  { ...newField("select", "tipo"), label: "Tipo de solicitud", options: ["Consulta", "Reclamo"], required: true },
-  {
-    ...newField("number", "pedido"), label: "Número de pedido", min: 1, max: 99999,
-    rule: { fieldId: "tipo", op: "equals", value: "Reclamo" },
-  },
-  {
-    ...newField("text", "detalle"), label: "Describe el problema", required: true, minLength: 10,
-    rule: { fieldId: "pedido", op: "filled" },
-  },
-  { ...newField("checkbox", "terminos"), label: "Acepto las condiciones", required: true },
-];
-
-const history = new History(SAMPLE);
+// Formulario inicial: la plantilla de atención al cliente (demuestra reglas encadenadas).
+let history = new History(TEMPLATES[0].fields);
 let fields = history.current;
 let seq = 0;
-const ui = { mode: "build", selectedId: null, device: "desktop", values: {}, errors: {}, submitted: false, focus: null };
+const ui = {
+  mode: "build", selectedId: null, device: "desktop", values: {}, errors: {}, submitted: false, focus: null,
+  formId: null, formName: TEMPLATES[0].nombre,
+};
 
 const main = $("#main");
 const statusEl = $("#status");
 
-function say(message) {
+// ---------- API para el resto del sitio (plantillas, mis formularios) ----------
+
+export function loadForm({ fields: next, name, id = null, mode = "build" }) {
+  history = new History(next);
+  fields = history.current;
+  Object.assign(ui, { mode, selectedId: null, values: {}, errors: {}, submitted: false, formId: id, formName: name });
+  seq = 0;
+  render();
+}
+
+export function refresh() {
+  render();
+}
+
+export function say(message) {
   statusEl.textContent = "";
   requestAnimationFrame(() => (statusEl.textContent = message));
 }
@@ -58,7 +64,8 @@ function undoRedo(direction) {
 }
 
 function addField(type, index = fields.length) {
-  const id = `campo${++seq}`;
+  let id;
+  do id = `campo${++seq}`; while (fields.some((f) => f.id === id));
   const field = newField(type, id);
   ui.selectedId = id;
   commit(insertField(fields, field, index), { props: true, message: `Campo ${field.label} agregado` });
@@ -121,6 +128,21 @@ function render() {
 function syncToolbar() {
   $("#btn-undo").disabled = !history.canUndo;
   $("#btn-redo").disabled = !history.canRedo;
+  const name = $("#form-name");
+  if (name && document.activeElement !== name) name.value = ui.formName;
+}
+
+function saveCurrent() {
+  const record = saveForm({ id: ui.formId, name: $("#form-name")?.value ?? ui.formName, fields });
+  ui.formId = record.id;
+  ui.formName = record.name;
+  syncToolbar();
+  say(`«${record.name}» guardado en Mis formularios`);
+  const btn = $("#btn-save");
+  if (btn) {
+    btn.textContent = "✓ Guardado";
+    setTimeout(() => (btn.textContent = "Guardar"), 1600);
+  }
 }
 
 function renderBuild() {
@@ -378,10 +400,12 @@ document.addEventListener("click", (e) => {
     case "device": ui.device = el.dataset.device; renderRun(); break;
     case "fill": fillTestData(); break;
     case "reset": ui.values = {}; ui.errors = {}; renderRun(); say("Formulario reiniciado"); break;
+    case "save": saveCurrent(); break;
   }
 });
 
 document.addEventListener("change", (e) => {
+  if (e.target.id === "form-name") ui.formName = e.target.value.trim() || ui.formName;
   const prop = e.target.closest("[data-prop]");
   if (prop) setProp(prop.dataset.prop, prop.value, prop);
 });
@@ -405,6 +429,8 @@ document.addEventListener("submit", (e) => {
 });
 
 document.addEventListener("keydown", (e) => {
+  if ($("#view-editor")?.hidden) return; // los atajos solo aplican en la página del editor
+  if (e.target.id === "form-name" && e.key === "Enter") { e.preventDefault(); saveCurrent(); return; }
   const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName);
   if ((e.ctrlKey || e.metaKey) && !typing) {
     const k = e.key.toLowerCase();

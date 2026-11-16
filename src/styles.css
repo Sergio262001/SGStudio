@@ -908,24 +908,6 @@ a {
   outline-offset: 2px;
 }
 
-.proj-section {
-  margin-top: 48px;
-}
-
-.proj-section-head {
-  margin-bottom: 20px;
-}
-
-.proj-section-head h2 {
-  font-size: 1.5rem;
-  margin-bottom: 4px;
-}
-
-.ux-list {
-  display: grid;
-  gap: 32px;
-}
-
 /* Tarjeta de caso: grande, sin salto al pasar el cursor */
 .ux-case {
   padding: 28px;
@@ -935,7 +917,7 @@ a {
   transform: none;
 }
 
-.ux-head h3 {
+.ux-head h1 {
   font-size: 1.55rem;
   margin: 6px 0;
   line-height: 1.2;
@@ -986,7 +968,7 @@ a {
   background: var(--accent-soft);
 }
 
-.ux-box h4 {
+.ux-box h2 {
   margin: 0 0 6px;
   font-size: 0.95rem;
 }
@@ -1168,8 +1150,64 @@ a {
 
 /* Proceso */
 .ux-process-title {
-  font-size: 1.15rem;
-  margin: 8px 0 14px;
+  font-size: 1.25rem;
+  margin: 28px 0 14px;
+}
+
+.ux-hint {
+  margin: -6px 0 14px;
+}
+
+.ux-actions-top {
+  margin-top: 0;
+  margin-bottom: 26px;
+}
+
+.breadcrumb {
+  margin-bottom: 18px;
+}
+
+.breadcrumb a {
+  color: var(--glow-title);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Tarjetas de la cuadrícula de proyectos */
+.proj-grid {
+  margin-top: 24px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-pill {
+  align-self: flex-start;
+}
+
+.card-pill-ux {
+  color: var(--glow-title);
+  border-color: var(--glow-border);
+}
+
+.project-desc {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+
+.card-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
 }
 
 .ux-process {
@@ -1210,7 +1248,7 @@ a {
   box-shadow: 0 0 0 5px var(--bg);
 }
 
-.ux-process h5 {
+.ux-process h3 {
   font-size: 1rem;
   margin: 2px 0 10px;
 }
@@ -1577,7 +1615,7 @@ a {
     padding: 18px;
   }
 
-  .ux-head h3 {
+  .ux-head h1 {
     font-size: 1.3rem;
   }
 
@@ -1605,4 +1643,13 @@ a {
   .proto-poster img {
     transition: none;
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }

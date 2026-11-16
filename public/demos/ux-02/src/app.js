@@ -1,4 +1,5 @@
 import { PARAMS, DEFAULTS, PRESETS, clampParams, simulate, summarize, bestIndexes, niceScale } from "./model.js";
+import { state, load, persist } from "./store.js";
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -23,27 +24,14 @@ const STYLES = [
   { name: "C", color: "var(--s-c)", dash: "12 4 2 4", width: 2.6 },
 ];
 
-const KEY = "ux02-panel-escenarios";
-const state = { params: { ...DEFAULTS }, saved: [], metric: "acumulado", view: "chart", cursor: null };
-
-function load() {
-  try {
-    const raw = JSON.parse(localStorage.getItem(KEY) ?? "null");
-    if (raw?.params) state.params = clampParams(raw.params);
-    if (Array.isArray(raw?.saved)) {
-      state.saved = raw.saved
-        .filter((s) => ["A", "B", "C"].includes(s?.name))
-        .slice(0, 3)
-        .map((s) => ({ name: s.name, params: clampParams(s.params) }));
-    }
-  } catch { /* sin almacenamiento: la página funciona igual */ }
-}
-function persist() {
-  try { localStorage.setItem(KEY, JSON.stringify({ params: state.params, saved: state.saved })); } catch { /* ignorar */ }
-}
-
 const statusEl = $("#status");
-function say(msg) { statusEl.textContent = ""; requestAnimationFrame(() => (statusEl.textContent = msg)); }
+export function say(msg) { statusEl.textContent = ""; requestAnimationFrame(() => (statusEl.textContent = msg)); }
+
+// Llamado por el sitio al volver a la página del panel.
+export function refresh() {
+  syncInputs();
+  update();
+}
 
 // ---------- Parámetros ----------
 
