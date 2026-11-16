@@ -12,7 +12,7 @@ const AREAS = [
     icono: "∞",
     titulo: "DevOps",
     texto: "Pipelines que prueban, aseguran y despliegan solos.",
-    chips: ["Docker", "GitHub Actions", "Terraform", "Argo CD"],
+    chips: ["Docker", "GitHub Actions", "AWS", "Terraform"],
   },
   {
     icono: "</>",

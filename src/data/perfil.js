@@ -96,7 +96,7 @@ export const PERFIL = {
     { titulo: "Diseño UX/UI Avanzado", lugar: "Coderhouse", periodo: "2024" },
     { titulo: "JavaScript", lugar: "Coderhouse", periodo: "En curso · 2026" },
     { titulo: "React", lugar: "Coderhouse", periodo: "En curso · 2026" },
-    { titulo: "AWS Cloud Practitioner", lugar: "AWS Skill Builder", periodo: "Iniciando · 2026" },
+    { titulo: "AWS Certified Cloud Practitioner", lugar: "Udemy", periodo: "En curso · 2026" },
   ],
 
   idiomas: [
