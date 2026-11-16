@@ -48,7 +48,7 @@ export const DEVOPS = {
     ["Operación", "Runbooks y simulacro de incidente documentados."],
   ],
   herramientas: ["Docker", "Kubernetes", "Terraform", "GitHub Actions", "Argo CD", "Prometheus", "OPA"],
-  estado: "La API, su imagen y los manifiestos están verificados; la infraestructura aún no se ha desplegado en la nube.",
+  estado: "El pipeline pasa completo en GitHub Actions: pruebas, políticas, imagen con SBOM firmada y actualización GitOps. La infraestructura en la nube está definida en Terraform, pero aún no se ha desplegado.",
   repo: `${REPO}/devops-01-plataforma-entrega`,
 };
 
