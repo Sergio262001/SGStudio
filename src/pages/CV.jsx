@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { PERFIL } from "../data/perfil";
 
+const PDF = `${import.meta.env.BASE_URL}cv/CV-Sergio-Gil-DevOps-Junior.pdf`;
 const sinProtocolo = (url) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 
 // Hoja de vida en una columna, con texto real (la leen bien los filtros ATS) y lista para imprimir.
@@ -28,11 +29,14 @@ export default function CV() {
         <div className="container cv-wrap">
           <div className="cv-toolbar no-print">
             <h1 className="sr-only">Hoja de vida</h1>
-            <button type="button" className="btn btn-primary btn-lg" onClick={() => window.print()}>
+            {/* PDF real (funciona bien en celulares); se genera desde esta misma página, sin datos privados */}
+            <a className="btn btn-primary btn-lg" href={PDF} download="CV Sergio Gil - DevOps Junior.pdf">
               ⬇ Descargar PDF
+            </a>
+            <button type="button" className="btn btn-outline btn-lg" onClick={() => window.print()}>
+              Imprimir
             </button>
             <Link to="/contacto" className="btn btn-outline btn-lg">Contactar</Link>
-            <p className="cv-hint">En el diálogo de impresión elige «Guardar como PDF».</p>
           </div>
 
           <article className="cv" aria-label={`Hoja de vida de ${PERFIL.nombre}`}>

@@ -53,7 +53,7 @@ export const PERFIL = {
       lugar: "Ministerio de Salud y Protección Social",
       periodo: "2026 – Actualidad",
       logros: [
-        "Publicación y actualización de contenidos del portal web institucional en SharePoint.",
+        "Publicación y actualización de contenidos del portal web institucional, de alcance nacional, en SharePoint.",
         "Soporte y mantenimiento del sitio web.",
       ],
     },
