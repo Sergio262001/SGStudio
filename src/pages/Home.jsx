@@ -56,7 +56,7 @@ export default function Home() {
               {PERFIL.frase} Vengo del diseño: cuido cómo se ve y cómo funciona.
             </motion.p>
             <motion.p className="hero-now" variants={subir}>
-              <span className="hero-now-k">Actualmente</span>
+              <span className="hero-now-k">Experiencia</span>
               {PERFIL.actual.cargo} · {PERFIL.actual.lugar}
             </motion.p>
             <motion.div className="hero-actions" variants={subir}>

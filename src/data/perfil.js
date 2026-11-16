@@ -7,8 +7,8 @@ export const PERFIL = {
   rol: "DevOps Junior · Desarrollador web",
   frase: "Automatizo, despliego y diseño productos web que funcionan.",
   resumen:
-    "Webmaster en el sector público y desarrollador web en transición a DevOps. Construyo pipelines de CI/CD, trabajo con contenedores e infraestructura como código, y aporto una base sólida en UX/UI y frontend.",
-  // Empleo actual: se muestra en la portada y encabeza la experiencia del CV
+    "Desarrollador web en transición a DevOps, con experiencia como webmaster en el sector público. Construyo pipelines de CI/CD, trabajo con contenedores e infraestructura como código, y aporto una base sólida en UX/UI y frontend.",
+  // Experiencia destacada en la portada (sin «actualmente»: sigue siendo cierta después de terminar)
   actual: { cargo: "Webmaster", lugar: "Ministerio de Salud y Protección Social" },
 
   links: {
@@ -51,7 +51,7 @@ export const PERFIL = {
     {
       cargo: "Webmaster",
       lugar: "Ministerio de Salud y Protección Social",
-      periodo: "2026 – Actualidad",
+      periodo: "2026",
       logros: [
         "Publicación y actualización de contenidos del portal web institucional, de alcance nacional, en SharePoint.",
         "Soporte y mantenimiento del sitio web.",
