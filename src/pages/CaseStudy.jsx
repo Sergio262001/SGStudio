@@ -10,27 +10,19 @@ export default function CaseStudy() {
   const caso = CASOS[id];
   if (!caso) return <Navigate to="/proyectos" replace />;
 
-  const { data } = caso;
-  const volver = caso.tipo === "ux" ? "/proyectos?cat=ux" : "/proyectos?cat=devops";
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.4 }}
-    >
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.35 }}>
       <Helmet>
-        <title>{`${data.titulo} | Caso de estudio | SG Studio`}</title>
-        <meta name="description" content={data.resumen} />
+        <title>{`${caso.titulo} | Caso de estudio | SG Studio`}</title>
+        <meta name="description" content={caso.resumen} />
       </Helmet>
 
-      <section className="section">
+      <section className="section section-tight">
         <div className="container">
           <nav aria-label="Ruta de navegación" className="breadcrumb">
-            <Link to={volver}>← Volver a proyectos</Link>
+            <Link to={`/proyectos?cat=${caso.tipo}`}>← Volver a proyectos</Link>
           </nav>
-          {caso.tipo === "ux" ? <UxCase caso={data} /> : <DevopsCase caso={data} />}
+          {caso.tipo === "ux" ? <UxCase caso={caso} /> : <DevopsCase caso={caso} />}
         </div>
       </section>
     </motion.div>

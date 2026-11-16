@@ -1,107 +1,107 @@
+import { Link } from "react-router-dom";
 import PrototypeViewer from "./PrototypeViewer";
 import Wireframe from "./Wireframe";
+import Resumen30 from "./Resumen30";
+import Tabs from "./Tabs";
 
-const BASE = import.meta.env.BASE_URL;
-
-// Caso de estudio UX/UI (página de detalle): reto → prototipo navegable → proceso.
+// Caso de estudio UX/UI: poco texto, lo importante a la vista y el proceso en pestañas.
 export default function UxCase({ caso }) {
-  return (
-    <article className="card ux-case" aria-labelledby={`t-${caso.id}`}>
-      <header className="ux-head">
-        <span className="pill">Caso de estudio · UX/UI</span>
-        <h1 id={`t-${caso.id}`}>{caso.titulo}</h1>
-        <p className="ux-sub">{caso.subtitulo}</p>
-        <dl className="ux-meta">
-          <div>
-            <dt>Mi rol</dt>
-            <dd>{caso.rol}</dd>
-          </div>
-          <div>
-            <dt>Herramientas</dt>
-            <dd>{caso.herramientas.join(" · ")}</dd>
-          </div>
-        </dl>
-        <div className="ux-actions ux-actions-top">
-          <a className="btn btn-primary" href={`${BASE}demos/${caso.demo}/index.html`} target="_blank" rel="noopener noreferrer">
-            Ver proyecto en pantalla completa
-          </a>
-          <a className="btn btn-outline" href={caso.repo} target="_blank" rel="noopener noreferrer">
-            Ver código y documentación
-          </a>
+  const tabs = [
+    {
+      titulo: "Problema",
+      contenido: (
+        <ul className="pain-list">
+          {caso.dolores.map((d) => (
+            <li key={d}>{d}</li>
+          ))}
+        </ul>
+      ),
+    },
+    {
+      titulo: "Flujo",
+      contenido: (
+        <ol className="ux-flow">
+          {caso.flujo.map((paso) => (
+            <li key={paso}>{paso}</li>
+          ))}
+        </ol>
+      ),
+    },
+    {
+      titulo: "Boceto → diseño",
+      contenido: (
+        <div className="ux-compare">
+          <figure>
+            <Wireframe tipo={caso.wireframe} />
+            <figcaption>Wireframe</figcaption>
+          </figure>
+          <figure>
+            <img src={caso.capturas.app} alt={`Diseño final de ${caso.titulo}`} loading="lazy" />
+            <figcaption>Diseño final</figcaption>
+          </figure>
         </div>
-      </header>
-
-      <div className="ux-split">
-        <div className="ux-box">
-          <h2>El reto</h2>
-          <p>{caso.reto}</p>
+      ),
+    },
+    {
+      titulo: "Decisiones",
+      contenido: (
+        <div className="ux-decisions">
+          {caso.decisiones.map(([t, d]) => (
+            <div key={t} className="ux-decision">
+              <strong>{t}</strong>
+              <p>{d}</p>
+            </div>
+          ))}
         </div>
-        <div className="ux-box ux-box-accent">
-          <h2>La solución</h2>
-          <p>{caso.solucion}</p>
-        </div>
-      </div>
-
-      <h2 className="ux-process-title">Prototipo navegable</h2>
-      <p className="muted ux-hint">Recorre todas sus páginas desde el menú del prototipo, en vista de escritorio o de móvil.</p>
-      <PrototypeViewer caso={caso} />
-
-      <h2 className="ux-process-title">El proceso</h2>
-      <ol className="ux-process">
-        <li>
-          <h3>Entender el problema</h3>
-          <ul className="bullets">
-            {caso.dolores.map((d) => (
-              <li key={d}>{d}</li>
-            ))}
-          </ul>
-        </li>
-
-        <li>
-          <h3>Flujo de la persona usuaria</h3>
-          <ol className="ux-flow">
-            {caso.flujo.map((paso) => (
-              <li key={paso}>{paso}</li>
-            ))}
-          </ol>
-        </li>
-
-        <li>
-          <h3>Del boceto al diseño final</h3>
-          <div className="ux-compare">
-            <figure>
-              <Wireframe tipo={caso.wireframe} />
-              <figcaption>Wireframe de baja fidelidad</figcaption>
-            </figure>
-            <figure>
-              <img src={caso.capturas.app} alt={`Diseño final de ${caso.titulo}`} loading="lazy" />
-              <figcaption>Diseño final, funcionando</figcaption>
-            </figure>
-          </div>
-        </li>
-
-        <li>
-          <h3>Decisiones de diseño</h3>
-          <div className="ux-decisions">
-            {caso.decisiones.map(([titulo, texto]) => (
-              <div key={titulo} className="ux-decision">
-                <strong>{titulo}</strong>
-                <p>{texto}</p>
-              </div>
-            ))}
-          </div>
-        </li>
-
-        <li>
-          <h3>Validación</h3>
-          <ul className="bullets">
+      ),
+    },
+    {
+      titulo: "Validación",
+      contenido: (
+        <>
+          <ul className="check-list">
             {caso.validacion.map((v) => (
               <li key={v}>{v}</li>
             ))}
           </ul>
           <p className="ux-next">{caso.siguiente}</p>
-        </li>
-      </ol>
+        </>
+      ),
+    },
+  ];
+
+  return (
+    <article className="case" aria-labelledby={`t-${caso.id}`}>
+      <header className="case-head">
+        <span className="pill">{caso.etiqueta}</span>
+        <h1 id={`t-${caso.id}`}>{caso.titulo}</h1>
+        <p className="case-sub">{caso.subtitulo}</p>
+        <ul className="chip-row" aria-label="Rol y herramientas">
+          <li className="chip chip-strong">{caso.rol}</li>
+          {caso.herramientas.map((h) => (
+            <li key={h} className="chip">{h}</li>
+          ))}
+        </ul>
+        <div className="case-actions">
+          <Link to={`/ver/${caso.id}`} className="btn btn-primary">
+            ▶ Abrir el proyecto
+          </Link>
+          <a className="btn btn-outline" href={caso.repo} target="_blank" rel="noopener noreferrer">
+            Código ↗
+          </a>
+        </div>
+      </header>
+
+      <Resumen30 items={caso.resumen30} />
+
+      <section className="case-block" aria-label="Prototipo">
+        <PrototypeViewer caso={caso} />
+      </section>
+
+      <section className="case-block" aria-labelledby={`p-${caso.id}`}>
+        <h2 id={`p-${caso.id}`} className="case-h2">Cómo lo resolví</h2>
+        <Tabs label="Proceso de diseño" tabs={tabs} />
+      </section>
     </article>
   );
 }

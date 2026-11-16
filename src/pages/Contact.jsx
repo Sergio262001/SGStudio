@@ -1,87 +1,60 @@
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import { PERFIL } from "../data/perfil";
+
+const subir = { hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } };
 
 export default function Contact() {
+  const { links, contacto } = PERFIL;
+  const canales = [
+    contacto.email && { titulo: "Correo", texto: contacto.email, href: `mailto:${contacto.email}`, externo: false, principal: true },
+    { titulo: "LinkedIn", texto: "Escríbeme o revisa mi perfil", href: links.linkedin, externo: true, principal: !contacto.email },
+    { titulo: "GitHub", texto: "Código de todos mis proyectos", href: links.github, externo: true },
+    contacto.telefono && { titulo: "WhatsApp", texto: contacto.telefono, href: `https://wa.me/57${contacto.telefono.replace(/\D/g, "")}`, externo: true },
+  ].filter(Boolean);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.4 }}
-    >
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.35 }}>
       <Helmet>
         <title>Contacto | SG Studio</title>
-        <meta name="description" content="Ponte en contacto con SG Studio para empezar y cotizar tu próximo proyecto web." />
+        <meta name="description" content="Contacto para oportunidades como DevOps Junior o proyectos web." />
       </Helmet>
-      <section className="section">
-        <div className="container contact-grid">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            <h1>Construyamos algo juntos</h1>
-            <p className="section-intro">
-              Cuéntame brevemente tu idea, el tipo de proyecto y el plazo que
-              tienes en mente. Te responderé con una propuesta clara y honesta.
-            </p>
 
-            <div className="contact-info">
-              <p>Puedes contactarme por correo o enviarme el formulario.</p>
-              <p>
-                <strong>Email:</strong> tu-correo@example.com
-              </p>
-              <p>
-                <strong>GitHub:</strong> github.com/tu-usuario
-              </p>
-              <p>
-                <strong>LinkedIn:</strong> linkedin.com/in/tu-perfil
-              </p>
-            </div>
+      <section className="section section-tight">
+        <div className="container">
+          <h1>Hablemos</h1>
+          <p className="section-intro">Para oportunidades como DevOps Junior o proyectos web. Respondo rápido.</p>
+
+          <motion.div className="contact-cards" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.08 } } }}>
+            {canales.map((c) => (
+              <motion.a
+                key={c.titulo}
+                href={c.href}
+                className={`card contact-card glow ${c.principal ? "contact-main" : ""}`}
+                target={c.externo ? "_blank" : undefined}
+                rel={c.externo ? "noopener noreferrer" : undefined}
+                variants={subir}
+              >
+                <strong>{c.titulo} {c.externo && <span aria-hidden="true">↗</span>}</strong>
+                <span>{c.texto}</span>
+              </motion.a>
+            ))}
+            <motion.div variants={subir}>
+              <Link to="/cv" className="card contact-card glow">
+                <strong>Mi CV</strong>
+                <span>Verlo o descargarlo en PDF</span>
+              </Link>
+            </motion.div>
           </motion.div>
 
-          <motion.form 
-            className="contact-form"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <div className="form-row">
-              <label htmlFor="name">Nombre</label>
-              <input id="name" type="text" placeholder="¿Cómo te llamas?" />
+          <div className="cta-band cta-small">
+            <h2>¿Necesitas una web para tu negocio?</h2>
+            <p>Landing pages, menús digitales con QR y tiendas online.</p>
+            <div className="hero-actions">
+              <Link to="/servicios" className="btn btn-outline btn-lg">Ver servicios y precios</Link>
             </div>
-
-            <div className="form-row">
-              <label htmlFor="email">Correo</label>
-              <input
-                id="email"
-                type="email"
-                placeholder="tuempresa@ejemplo.com"
-              />
-            </div>
-
-            <div className="form-row">
-              <label htmlFor="project">Tipo de proyecto</label>
-              <input
-                id="project"
-                type="text"
-                placeholder="Landing, app web, panel interno, etc."
-              />
-            </div>
-
-            <div className="form-row">
-              <label htmlFor="message">Cuéntame un poco más</label>
-              <textarea
-                id="message"
-                rows="4"
-                placeholder="Contexto, objetivos, plazos..."
-              />
-            </div>
-
-            <button type="submit" className="btn btn-primary">
-              Enviar mensaje
-            </button>
-          </motion.form>
+          </div>
         </div>
       </section>
     </motion.div>

@@ -1,242 +1,128 @@
-import { useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
+import { PERFIL } from "../data/perfil";
 
-export default function About() {
-  const certificates = useMemo(
-    () => [
-      {
-        title: "Diseño UX/UI Avanzado",
-        org: "Coderhouse",
-        status: "Finalizado",
-        desc: "Diseño de interfaces, UX, jerarquía visual y buenas prácticas.",
-        image: `${import.meta.env.BASE_URL}img/certificado/certificado-ux.png`,
-      },
-      {
-        title: "Tendencias de marketing digital con certificaciones",
-        org: "Fundación Universitaria Los Libertadores",
-        status: "Finalizado",
-        desc: "Seminario enfocado en tendencias y herramientas de marketing digital.",
-        image: `${import.meta.env.BASE_URL}img/certificado/certificado-uni1.PNG`,
-      },
-      {
-        title: "Spin-Off y Proyectos Creativos de Base Tecnológica",
-        org: "Fundación Universitaria Los Libertadores",
-        status: "Finalizado",
-        desc: "Seminario de innovación, emprendimiento y proyectos tecnológicos.",
-        image: `${import.meta.env.BASE_URL}img/certificado/certificado-uni2.PNG`,
-      },
-      {
-        title: "JavaScript",
-        org: "Coderhouse",
-        status: "Cursando",
-        desc: "Fundamentos, lógica, DOM y bases para proyectos frontend.",
-        image: `${import.meta.env.BASE_URL}img/certificado/certificado-js.webp`,
-      },
-      {
-        title: "React",
-        org: "Coderhouse",
-        status: "Cursando",
-        desc: "Componentes, props, state y estructura de proyectos modernos.",
-        image: `${import.meta.env.BASE_URL}img/certificado/certificado-react.png`,
-      },
-    ],
-    []
-  );
+const IMG = `${import.meta.env.BASE_URL}img/certificado/`;
+const CERTIFICADOS = [
+  { title: "Diseño UX/UI Avanzado", org: "Coderhouse", status: "Finalizado", image: `${IMG}certificado-ux.png` },
+  { title: "JavaScript", org: "Coderhouse", status: "Cursando", image: `${IMG}certificado-js.webp` },
+  { title: "React", org: "Coderhouse", status: "Cursando", image: `${IMG}certificado-react.png` },
+  { title: "Tendencias de marketing digital", org: "Los Libertadores", status: "Finalizado", image: `${IMG}certificado-uni1.PNG` },
+  { title: "Spin-Off y proyectos de base tecnológica", org: "Los Libertadores", status: "Finalizado", image: `${IMG}certificado-uni2.PNG` },
+];
 
-  const [openCert, setOpenCert] = useState(null);
+const subir = { hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } };
+
+function ModalCertificado({ cert, onClose }) {
+  const cerrar = useRef(null);
+  useEffect(() => {
+    const previo = document.activeElement;
+    cerrar.current?.focus();
+    const onKey = (e) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      previo?.focus?.(); // devolver el foco a la tarjeta que abrió el modal
+    };
+  }, [onClose]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.4 }}
-    >
+    <motion.div className="modal-overlay" onClick={onClose} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+      <motion.div
+        className="modal"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+      >
+        <div className="modal-header">
+          <div>
+            <h2 className="modal-title" id="modal-title">{cert.title}</h2>
+            <p className="modal-sub">{cert.org} · {cert.status}</p>
+          </div>
+          <button ref={cerrar} className="modal-close" type="button" onClick={onClose} aria-label="Cerrar (Esc)">✕</button>
+        </div>
+        <div className="modal-content">
+          <img className="modal-image" src={cert.image} alt={`Certificado: ${cert.title}`} />
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+export default function About() {
+  const [abierto, setAbierto] = useState(null);
+
+  return (
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.35 }}>
       <Helmet>
-        <title>Sobre Mí | SG Studio</title>
-        <meta name="description" content="Conoce más sobre mi trayectoria como desarrollador frontend Jr., mis habilidades y mis certificaciones en UX/UI y React." />
+        <title>Sobre mí | SG Studio</title>
+        <meta name="description" content={PERFIL.resumen} />
       </Helmet>
-      <section className="section">
+
+      <section className="section section-tight">
         <div className="container">
-          {/* ===== ABOUT LAYOUT (como el Home) ===== */}
-          <div className="about-layout">
-            {/* IZQUIERDA: TEXTO */}
-            <motion.div 
-              className="about-top"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              <h1>Sobre mí</h1>
+          <h1>Sobre mí</h1>
+          <p className="section-intro about-lead">{PERFIL.resumen}</p>
 
-              <p>
-                Soy <strong>Desarrollador Frontend Jr</strong> con formación en{" "}
-                <strong>diseño gráfico</strong> y conocimientos en{" "}
-                <strong>UX/UI</strong>. Me interesa especialmente el punto donde el
-                diseño se convierte en algo funcional: cuando una idea visual pasa
-                a ser una interfaz real que las personas pueden usar.
-              </p>
+          {/* Recorrido */}
+          <h2 className="section-title">Mi camino</h2>
+          <motion.ol className="timeline" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ visible: { transition: { staggerChildren: 0.12 } } }}>
+            {PERFIL.camino.map((c, i) => (
+              <motion.li key={c.etapa} className={i === PERFIL.camino.length - 1 ? "timeline-now" : ""} variants={subir}>
+                <span className="timeline-year">{c.anio}</span>
+                <strong>{c.etapa}</strong>
+                <span>{c.texto}</span>
+              </motion.li>
+            ))}
+          </motion.ol>
 
-              <p>
-                Trabajo principalmente con <strong>HTML, CSS y JavaScript</strong>,
-                creando páginas web claras, responsivas y bien estructuradas.
-                Actualmente continúo aprendiendo <strong>React</strong>,
-                aplicándolo en proyectos personales para fortalecer mis bases como
-                frontend.
-              </p>
-
-              <p>
-                Mi background en diseño me permite cuidar el detalle visual, la
-                jerarquía, la tipografía y la experiencia de usuario, mientras sigo
-                creciendo en el área técnica.
-              </p>
-
-              <h2 className="subheading">Cómo trabajo y cómo aprendo</h2>
-              <ul className="bullets">
-                <li>Diseño visual aplicado al desarrollo frontend.</li>
-                <li>Maquetación responsive y estructura clara.</li>
-                <li>Aprendizaje constante a través de proyectos reales.</li>
-              </ul>
-            </motion.div>
-
-            {/* DERECHA: CARDS */}
-            <motion.div 
-              className="about-side"
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.2, delayChildren: 0.3 }
-                }
-              }}
-            >
-              <motion.div 
-                className="card glow"
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              >
-                <h3>Stack actual</h3>
-                <ul className="bullets">
-                  <li>HTML · CSS · JavaScript</li>
-                  <li>React (en aprendizaje) · Vite</li>
-                  <li>Firebase (Auth · Hosting)</li>
-                  <li>Git · GitHub</li>
-                  <li>Figma · Adobe Suite (Ps · Pr · Ai)</li>
-                  <li>MongoDB (básico)</li>
+          {/* Habilidades */}
+          <h2 className="section-title">Habilidades</h2>
+          <div className="skills-grid">
+            {PERFIL.habilidades.map((h) => (
+              <div key={h.grupo} className="card skill-group">
+                <h3>{h.grupo}</h3>
+                <ul className="chip-row">
+                  {h.items.map((i) => (
+                    <li key={i} className="chip">{i}</li>
+                  ))}
                 </ul>
-              </motion.div>
-
-              <motion.div 
-                className="card glow"
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              >
-                <h3>En qué puedo ayudarte</h3>
-                <ul className="bullets">
-                  <li>Landing pages y sitios informativos.</li>
-                  <li>Webs para marcas personales y negocios.</li>
-                  <li>Maquetación responsive y mejora visual.</li>
-                  <li>Integraciones básicas con Firebase.</li>
-                </ul>
-              </motion.div>
-            </motion.div>
+              </div>
+            ))}
           </div>
 
-          {/* ===== CERTIFICADOS ===== */}
-          <motion.div 
-            className="certs-section"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2>Certificados</h2>
-            <p className="section-intro">
-              Una selección de cursos y seminarios. (Click para ver el certificado.)
-            </p>
+          {/* Certificados */}
+          <h2 className="section-title">Certificados</h2>
+          <div className="certs-grid">
+            {CERTIFICADOS.map((cert) => (
+              <button key={cert.title} type="button" className="cert-card glow" onClick={() => setAbierto(cert)}>
+                <div className="cert-thumb">
+                  <img src={cert.image} alt="" loading="lazy" />
+                </div>
+                <div className="cert-body">
+                  <h3>{cert.title}</h3>
+                  <p className="cert-org">{cert.org} · <span className="cert-status">{cert.status}</span></p>
+                  <span className="cert-cta">Ver certificado →</span>
+                </div>
+              </button>
+            ))}
+          </div>
 
-            <div className="certs-grid">
-              {certificates.map((cert) => (
-                <button
-                  key={cert.title}
-                  type="button"
-                  className="cert-card glow"
-                  onClick={() => setOpenCert(cert)}
-                >
-                  <div className="cert-thumb">
-                    <img
-                      src={cert.image}
-                      alt={`Certificado: ${cert.title}`}
-                      loading="lazy"
-                    />
-                  </div>
-
-                  <div className="cert-body">
-                    <h3>{cert.title}</h3>
-                    <p className="cert-org">
-                      {cert.org} ·{" "}
-                      <span className="cert-status">{cert.status}</span>
-                    </p>
-                    <p className="cert-desc">{cert.desc}</p>
-                    <span className="cert-cta">Ver certificado →</span>
-                  </div>
-                </button>
-              ))}
+          <div className="cta-band cta-small">
+            <h2>¿Quieres el detalle?</h2>
+            <div className="hero-actions">
+              <Link to="/cv" className="btn btn-primary btn-lg">Ver mi CV</Link>
+              <Link to="/proyectos" className="btn btn-outline btn-lg">Ver proyectos</Link>
             </div>
-          </motion.div>
+          </div>
 
-          {/* ===== MODAL ===== */}
-          <AnimatePresence>
-            {openCert && (
-              <motion.div 
-                className="modal-overlay" 
-                onClick={() => setOpenCert(null)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <motion.div
-                  className="modal"
-                  onClick={(e) => e.stopPropagation()}
-                  role="dialog"
-                  aria-modal="true"
-                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="modal-header">
-                    <div>
-                      <h3 className="modal-title">{openCert.title}</h3>
-                      <p className="modal-sub">
-                        {openCert.org} · {openCert.status}
-                      </p>
-                    </div>
-
-                    <button
-                      className="modal-close"
-                      type="button"
-                      onClick={() => setOpenCert(null)}
-                      aria-label="Cerrar"
-                    >
-                      ✕
-                    </button>
-                  </div>
-
-                  <div className="modal-content">
-                    <img
-                      className="modal-image"
-                      src={openCert.image}
-                      alt={`Certificado: ${openCert.title}`}
-                    />
-                    <p className="modal-desc">{openCert.desc}</p>
-                  </div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <AnimatePresence>{abierto && <ModalCertificado cert={abierto} onClose={() => setAbierto(null)} />}</AnimatePresence>
         </div>
       </section>
     </motion.div>

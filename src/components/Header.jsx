@@ -1,55 +1,55 @@
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+
+const ENLACES = [
+  { to: "/", label: "Inicio", end: true },
+  { to: "/proyectos", label: "Proyectos" },
+  { to: "/sobre-mi", label: "Sobre mí" },
+  { to: "/cv", label: "CV" },
+  { to: "/servicios", label: "Servicios" },
+  { to: "/contacto", label: "Contacto", cta: true },
+];
 
 export default function Header() {
+  const [abierto, setAbierto] = useState(false);
+  const { pathname } = useLocation();
+
+  // Al cambiar de página, el menú móvil se cierra
+  useEffect(() => {
+    setAbierto(false);
+  }, [pathname]);
+
   return (
-    <header className="site-header">
+    <header className={`site-header ${abierto ? "menu-abierto" : ""}`}>
       <div className="container header-inner">
-        
-        {/* LOGO */}
-        <div className="brand">
-                  <img
-          src={`${import.meta.env.BASE_URL}img/logos/logoSG.png`}
-          alt="SG Studio logo"
-          className="brand-logo"
-        />
+        <NavLink to="/" className="brand" aria-label="SG Studio, ir al inicio">
+          <img src={`${import.meta.env.BASE_URL}img/logos/logoSG.png`} alt="" className="brand-logo" />
+        </NavLink>
 
-        </div>  
+        <button
+          type="button"
+          className="menu-toggle"
+          aria-expanded={abierto}
+          aria-controls="menu-principal"
+          onClick={() => setAbierto((v) => !v)}
+        >
+          <span className="menu-icon" aria-hidden="true" />
+          {abierto ? "Cerrar" : "Menú"}
+        </button>
 
-        {/* NAV */}
-        <nav className="main-nav" aria-label="Navegación principal">
-          <NavLink to="/" end className={({ isActive }) =>
-            "nav-link" + (isActive ? " nav-link-active" : "")
-          }>
-            Inicio
-          </NavLink>
-
-          <NavLink to="/proyectos" className={({ isActive }) =>
-            "nav-link" + (isActive ? " nav-link-active" : "")
-          }>
-            Proyectos
-          </NavLink>
-
-          <NavLink to="/servicios" className={({ isActive }) =>
-            "nav-link" + (isActive ? " nav-link-active" : "")
-          }>
-            Servicios
-          </NavLink>
-
-          <NavLink to="/sobre-mi" className={({ isActive }) =>
-            "nav-link" + (isActive ? " nav-link-active" : "")
-          }>
-            Sobre mí
-          </NavLink>
-
-          <NavLink to="/contacto" className={({ isActive }) =>
-            "nav-link nav-link-cta" + (isActive ? " nav-link-active" : "")
-          }>
-            Contacto
-          </NavLink>
+        <nav className="main-nav" id="menu-principal" aria-label="Navegación principal">
+          {ENLACES.map((e) => (
+            <NavLink
+              key={e.to}
+              to={e.to}
+              end={e.end}
+              className={({ isActive }) => `nav-link${e.cta ? " nav-link-cta" : ""}${isActive ? " nav-link-active" : ""}`}
+            >
+              {e.label}
+            </NavLink>
+          ))}
         </nav>
-
       </div>
     </header>
   );
 }
-
