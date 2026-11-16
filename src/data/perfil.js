@@ -65,7 +65,7 @@ export const PERFIL = {
         "Diseño y desarrollo de menús digitales con QR para restaurantes, cafés y bares, con panel de administración.",
         "Desarrollo de landing pages, sitios informativos y tiendas online para negocios y marcas personales.",
         "Despliegue en GitHub Pages y Firebase Hosting, con control de versiones en Git.",
-        "Autenticación y bases de datos con Firebase y Supabase.",
+        "Panel administrativo de FreshCo: productos, contenidos, base de datos y WhatsApp.",
       ],
     },
   ],
