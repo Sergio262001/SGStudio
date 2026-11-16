@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Constructor de formularios | Prototipo</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Saltar al contenido</a>
+  <header class="topbar">
+    <h1>Constructor de formularios</h1>
+    <div class="toolbar" role="toolbar" aria-label="Acciones">
+      <button type="button" data-action="undo" id="btn-undo" title="Deshacer (Ctrl+Z)">↶ Deshacer</button>
+      <button type="button" data-action="redo" id="btn-redo" title="Rehacer (Ctrl+Y)">↷ Rehacer</button>
+      <span class="sep" aria-hidden="true"></span>
+      <div class="seg" role="group" aria-label="Modo">
+        <button type="button" data-action="mode" data-mode="build" aria-pressed="true">Construir</button>
+        <button type="button" data-action="mode" data-mode="run" aria-pressed="false">Simular</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1"></main>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

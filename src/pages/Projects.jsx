@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function Projects() {
   return (
@@ -125,6 +126,13 @@ export default function Projects() {
               </a>
             </motion.article>
           </motion.div>
+
+          <p className="section-intro" style={{ marginTop: 32, marginBottom: 12 }}>
+            ¿Buscas prototipos de UX/UI o trabajo de DevOps? Mira los casos de estudio con demos interactivas.
+          </p>
+          <Link to="/casos" className="btn btn-outline">
+            Ver casos de estudio
+          </Link>
         </div>
       </section>
     </motion.div>
