@@ -16,9 +16,9 @@ export const PROYECTOS = [
     url: "https://pal-toque.com/",
   },
   {
-    titulo: "FreshCo · Panel administrativo",
+    titulo: "FreshCo · Tienda de ropa",
     etiqueta: "En producción",
-    resumen: "Panel de operación de una tienda de ropa urbana, con acceso por correo o Google.",
+    resumen: "Tienda online de ropa urbana con panel administrativo, acceso por correo o Google.",
     destacados: ["Gestión de productos", "Base de datos", "Atención por WhatsApp"],
     imagen: img("freshco-card.jpg"),
     url: "https://freshco-design.com/",
@@ -47,15 +47,6 @@ export const PROYECTOS = [
     destacados: ["Producción académica", "Proyectos de investigación", "Seminarios doctorales"],
     imagen: img("PROYECTO3.png"),
     url: "https://conacedum.com/",
-  },
-  {
-    titulo: "SG Packs · Tienda de packs digitales",
-    etiqueta: "Sitio web",
-    resumen: "Venta de packs para Photoshop y video, con entrega por Drive al confirmar el pago.",
-    destacados: ["Buscador y filtros", "Firestore y Cloud Functions", "Soporte por WhatsApp"],
-    imagen: img("PROYECTO4.png"),
-    url: "https://sgpackspdf.web.app/",
-    urlTexto: "Ver tienda",
   },
 ].map((p) => ({ cat: "web", ...p }));
 

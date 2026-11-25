@@ -7,8 +7,9 @@ import { PERFIL } from "../data/perfil";
 const IMG = `${import.meta.env.BASE_URL}img/certificado/`;
 const CERTIFICADOS = [
   { title: "Diseño UX/UI Avanzado", org: "Coderhouse", status: "Finalizado", image: `${IMG}certificado-ux.png` },
-  { title: "JavaScript", org: "Coderhouse", status: "Cursando", image: `${IMG}certificado-js.webp` },
-  { title: "React", org: "Coderhouse", status: "Cursando", image: `${IMG}certificado-react.png` },
+  // Imágenes provisionales hasta que llegue el certificado oficial (cambia solo el nombre del archivo).
+  { title: "JavaScript", org: "Coderhouse", status: "Finalizado", image: `${IMG}curso-js.png` },
+  { title: "React", org: "Coderhouse", status: "Finalizado", image: `${IMG}curso-react.png` },
   { title: "Tendencias de marketing digital", org: "Los Libertadores", status: "Finalizado", image: `${IMG}certificado-uni1.PNG` },
   { title: "Spin-Off y proyectos de base tecnológica", org: "Los Libertadores", status: "Finalizado", image: `${IMG}certificado-uni2.PNG` },
 ];

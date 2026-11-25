@@ -32,7 +32,7 @@ export const PERFIL = {
     },
     {
       grupo: "Desarrollo web",
-      items: ["HTML", "CSS", "JavaScript", "React (aprendiendo)", "Vite", "Git y GitHub"],
+      items: ["HTML", "CSS", "JavaScript", "React", "Vite", "Git y GitHub"],
     },
     {
       grupo: "Datos y hosting",
@@ -62,7 +62,6 @@ export const PERFIL = {
         "Diseño y desarrollo de menús digitales con QR para restaurantes, cafés y bares, con panel de administración.",
         "Desarrollo de landing pages, sitios informativos y tiendas online para negocios y marcas personales.",
         "Despliegue en GitHub Pages y Firebase Hosting, con control de versiones en Git.",
-        "Panel administrativo de FreshCo: productos, contenidos, base de datos y WhatsApp.",
       ],
     },
   ],
@@ -73,8 +72,8 @@ export const PERFIL = {
       detalle: "Tienda online en producción de camisetas para conciertos: preventas por edición, pasarela de pagos, rastreo de pedidos y chat de atención automatizado con IA.",
     },
     {
-      nombre: "SG Packs (sgpackspdf.web.app)",
-      detalle: "Tienda de packs digitales con Firebase (Firestore y Cloud Functions), buscador y filtros, y entrega por Drive al confirmar el pago.",
+      nombre: "FreshCo (freshco-design.com)",
+      detalle: "Tienda online de ropa urbana con panel administrativo: productos, contenidos, base de datos y atención por WhatsApp.",
     },
     {
       nombre: "Sitios para clientes",
@@ -89,8 +88,8 @@ export const PERFIL = {
 
   cursos: [
     { titulo: "Diseño UX/UI Avanzado", lugar: "Coderhouse", periodo: "2024" },
-    { titulo: "JavaScript", lugar: "Coderhouse", periodo: "En curso · 2026" },
-    { titulo: "React", lugar: "Coderhouse", periodo: "En curso · 2026" },
+    { titulo: "JavaScript", lugar: "Coderhouse", periodo: "2026" },
+    { titulo: "React", lugar: "Coderhouse", periodo: "2026" },
     { titulo: "AWS Certified Cloud Practitioner", lugar: "Udemy", periodo: "En curso · 2026" },
   ],
 
