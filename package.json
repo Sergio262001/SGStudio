@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist -b gh-pages"
+    "deploy": "npm run build && gh-pages -d dist -b gh-pages",
+    "demos": "node scripts/sincronizar-demos.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",
