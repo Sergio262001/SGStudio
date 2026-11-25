@@ -23,7 +23,7 @@ export default function Contact() {
       <section className="section section-tight">
         <div className="container">
           <h1>Hablemos</h1>
-          <p className="section-intro">¿Tienes una vacante de DevOps Junior? Escríbeme y te respondo pronto.</p>
+          <p className="section-intro">Escríbeme por correo o LinkedIn y te respondo pronto.</p>
 
           <motion.div className="contact-cards" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.08 } } }}>
             {/* Canal principal: correo en un clic */}

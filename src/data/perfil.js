@@ -7,7 +7,7 @@ export const PERFIL = {
   rol: "DevOps Junior · Desarrollador web",
   frase: "Automatizo, despliego y diseño productos web que funcionan.",
   resumen:
-    "Desarrollador web y diseñador UX/UI en transición a DevOps, con experiencia como webmaster en el sector público. Automatizo pruebas y despliegues con GitHub Actions y Docker, y publico mis proyectos con demos en vivo. Busco mi primer rol como DevOps Junior.",
+    "Desarrollador web y diseñador UX/UI en transición a DevOps, con experiencia como webmaster en el sector público. Automatizo pruebas y despliegues con GitHub Actions y Docker, y publico mis proyectos con demos en vivo.",
   // Experiencia destacada en la portada (sin «actualmente»: sigue siendo cierta después de terminar)
   actual: { cargo: "Webmaster", lugar: "Ministerio de Salud y Protección Social" },
 

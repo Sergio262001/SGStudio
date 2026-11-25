@@ -44,9 +44,8 @@ export default function Home() {
       <section className="section hero">
         <div className="container hero-grid">
           <motion.div className="hero-text" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
-            <motion.p className="pill pill-live" variants={subir}>
-              <span className="live-dot" aria-hidden="true" />
-              Busco mi primer rol como DevOps Junior
+            <motion.p className="pill" variants={subir}>
+              DevOps Junior · Bogotá, Colombia
             </motion.p>
             <motion.h1 variants={subir}>
               Hola, soy Sergio.
@@ -127,7 +126,7 @@ export default function Home() {
       <section className="section section-tight">
         <div className="container">
           <motion.div className="cta-band" initial={{ opacity: 0, scale: 0.97 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
-            <h2>¿Buscas un DevOps Junior con ojo de diseño?</h2>
+            <h2>¿Hablamos?</h2>
             <p>Automatizo con cuidado por el detalle y por quien usa el producto.</p>
             <div className="hero-actions">
               <Escribeme className="btn btn-primary btn-lg" />
