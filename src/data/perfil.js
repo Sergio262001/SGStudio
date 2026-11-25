@@ -4,10 +4,10 @@
 
 export const PERFIL = {
   nombre: "Sergio Gil",
-  rol: "DevOps Junior · Desarrollador web",
-  frase: "Automatizo, despliego y diseño productos web que funcionan.",
+  rol: "Desarrollador web y diseñador UX/UI",
+  frase: "Diseño, desarrollo y publico sitios web que funcionan.",
   resumen:
-    "Desarrollador web y diseñador UX/UI en transición a DevOps, con experiencia como webmaster en el sector público. Automatizo pruebas y despliegues con GitHub Actions y Docker, y publico mis proyectos con demos en vivo.",
+    "Desarrollador web y diseñador UX/UI en transición a DevOps, con experiencia como webmaster en el sector público. Diseño y desarrollo sitios y tiendas online que publico con Git, GitHub Pages y Firebase.",
   // Experiencia destacada en la portada (sin «actualmente»: sigue siendo cierta después de terminar)
   actual: { cargo: "Webmaster", lugar: "Ministerio de Salud y Protección Social" },
 
@@ -15,7 +15,6 @@ export const PERFIL = {
     github: "https://github.com/Sergio262001",
     linkedin: "https://www.linkedin.com/in/sergio-gil",
     web: "https://sergio262001.github.io/SGStudio/",
-    repoProyectos: "https://github.com/Sergio262001/portafolio-proyectos",
   },
 
   contacto: {
@@ -27,10 +26,6 @@ export const PERFIL = {
   ubicacion: "Bogotá, Colombia · Presencial, híbrido o remoto",
 
   habilidades: [
-    {
-      grupo: "DevOps y nube (en formación)",
-      items: ["Docker", "GitHub Actions (CI/CD)", "AWS", "Linux y Bash", "Terraform", "Kubernetes", "Argo CD · GitOps", "Prometheus"],
-    },
     {
       grupo: "Portales web",
       items: ["SharePoint", "Gestión de contenidos", "Mantenimiento de sitios institucionales"],
@@ -78,12 +73,12 @@ export const PERFIL = {
       detalle: "Tienda online en producción de camisetas para conciertos: preventas por edición, pasarela de pagos, rastreo de pedidos y chat de atención automatizado con IA.",
     },
     {
-      nombre: "Plataforma de entrega progresiva con GitOps",
-      detalle: "Pipeline CI/CD en GitHub Actions con pruebas, políticas OPA, SBOM y firma de imágenes, que despliega con canary y rollback automático (Argo Rollouts); infraestructura en Terraform. Incluye Canary Lab, un simulador web interactivo del flujo.",
+      nombre: "SG Packs (sgpackspdf.web.app)",
+      detalle: "Tienda de packs digitales con Firebase (Firestore y Cloud Functions), buscador y filtros, y entrega por Drive al confirmar el pago.",
     },
     {
-      nombre: "Formix y Escenaria",
-      detalle: "Prototipos web navegables de UX/UI, accesibles (WCAG 2.2) y con pruebas automatizadas.",
+      nombre: "Sitios para clientes",
+      detalle: "Hipnosis para sanar, e-commerce Great Value y el blog académico del Colectivo Narrativas.",
     },
   ],
 
@@ -110,6 +105,6 @@ export const PERFIL = {
     { etapa: "Diseño gráfico y UX/UI", texto: "Diseñar interfaces claras y accesibles.", anio: "2024–2025" },
     { etapa: "Desarrollo web freelance", texto: "Construir y publicar sitios para clientes reales.", anio: "Actualidad" },
     { etapa: "Webmaster · Ministerio de Salud", texto: "Mantener un portal público de alcance nacional.", anio: "2026" },
-    { etapa: "DevOps", texto: "Automatizar pruebas, seguridad y despliegues.", anio: "2026" },
+    { etapa: "En transición a DevOps", texto: "Formándome en la nube con el curso AWS Cloud Practitioner.", anio: "2026" },
   ],
 };

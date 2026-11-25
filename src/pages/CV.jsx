@@ -21,7 +21,7 @@ export default function CV() {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.35 }}>
       <Helmet>
-        <title>CV · Sergio Gil · DevOps Junior</title>
+        <title>CV · Sergio Gil</title>
         <meta name="description" content={`Hoja de vida de ${PERFIL.nombre}: ${PERFIL.rol}.`} />
       </Helmet>
 
@@ -30,7 +30,7 @@ export default function CV() {
           <div className="cv-toolbar no-print">
             <h1 className="sr-only">Hoja de vida</h1>
             {/* PDF real (funciona bien en celulares); se genera desde esta misma página, sin el teléfono */}
-            <a className="btn btn-primary btn-lg" href={PDF} download="CV Sergio Gil - DevOps Junior.pdf">
+            <a className="btn btn-primary btn-lg" href={PDF} download="CV Sergio Gil.pdf">
               ⬇ Descargar PDF
             </a>
             <button type="button" className="btn btn-outline btn-lg" onClick={() => window.print()}>
@@ -76,7 +76,7 @@ export default function CV() {
                   </li>
                 ))}
               </ul>
-              <p className="cv-note">Demos y código: {sinProtocolo(links.web)} · {sinProtocolo(links.repoProyectos)}</p>
+              <p className="cv-note">Portafolio: {sinProtocolo(links.web)}</p>
             </section>
 
             <section>

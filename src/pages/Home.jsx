@@ -1,32 +1,34 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import Terminal from "../components/Terminal";
 import ProjectCard from "../components/proyectos/ProjectCard";
 import { Escribeme } from "../components/Correo";
 import { PERFIL } from "../data/perfil";
-import { DESTACADOS_INICIO } from "../data/proyectos";
+import { DESTACADOS_INICIO, PROYECTOS } from "../data/proyectos";
 
 const AREAS = [
   {
-    icono: "∞",
-    titulo: "DevOps",
-    texto: "Pipelines que prueban, aseguran y despliegan solos.",
-    chips: ["Docker", "GitHub Actions", "AWS", "Terraform"],
-  },
-  {
     icono: "</>",
     titulo: "Desarrollo web",
-    texto: "Sitios rápidos y responsivos, publicados con Git.",
+    texto: "Sitios y tiendas rápidos y responsivos, publicados con Git.",
     chips: ["JavaScript", "React", "Firebase", "Supabase"],
   },
   {
     icono: "◐",
     titulo: "UX/UI",
-    texto: "Interfaces claras, accesibles y probadas.",
+    texto: "Interfaces claras y accesibles.",
     chips: ["Figma", "Prototipos", "WCAG"],
   },
+  {
+    icono: "▤",
+    titulo: "Portales web",
+    texto: "Gestión y publicación de contenidos institucionales.",
+    chips: ["SharePoint", "Contenidos", "Soporte"],
+  },
 ];
+
+// La vitrina del inicio muestra un proyecto real en producción.
+const VITRINA = PROYECTOS[0];
 
 const subir = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } };
 
@@ -36,7 +38,7 @@ export default function Home() {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
       <Helmet>
-        <title>Sergio Gil · DevOps Junior y desarrollador web</title>
+        <title>Sergio Gil · Desarrollador web y diseñador UX/UI</title>
         <meta name="description" content={`${PERFIL.rol}. ${PERFIL.frase}`} />
       </Helmet>
 
@@ -45,15 +47,15 @@ export default function Home() {
         <div className="container hero-grid">
           <motion.div className="hero-text" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
             <motion.p className="pill" variants={subir}>
-              DevOps Junior · Bogotá, Colombia
+              Desarrollador web · Bogotá, Colombia
             </motion.p>
             <motion.h1 variants={subir}>
               Hola, soy Sergio.
               <br />
-              <span className="accent">DevOps Junior</span> y desarrollador web.
+              <span className="accent">Desarrollador web</span> y diseñador UX/UI.
             </motion.h1>
             <motion.p className="hero-subtitle" variants={subir}>
-              {PERFIL.frase} Vengo del diseño: cuido cómo se ve y cómo funciona.
+              {PERFIL.frase} Vengo del diseño y estoy en transición a DevOps.
             </motion.p>
             <motion.dl className="hero-facts" variants={subir}>
               <div>
@@ -81,7 +83,18 @@ export default function Home() {
           </motion.div>
 
           <motion.div className="hero-panel" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.25, duration: 0.5 }}>
-            <Terminal />
+            <a
+              className="hero-card hero-vitrina"
+              href={VITRINA.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Ver ${VITRINA.titulo}, en producción (se abre en otra pestaña)`}
+            >
+              <span className="vitrina-pill">● {VITRINA.etiqueta}</span>
+              <img src={VITRINA.imagen} alt="" />
+              <strong>{VITRINA.titulo} ↗</strong>
+              <span className="vitrina-sub">{VITRINA.destacados.join(" · ")}</span>
+            </a>
           </motion.div>
         </div>
       </section>
@@ -127,7 +140,7 @@ export default function Home() {
         <div className="container">
           <motion.div className="cta-band" initial={{ opacity: 0, scale: 0.97 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
             <h2>¿Hablamos?</h2>
-            <p>Automatizo con cuidado por el detalle y por quien usa el producto.</p>
+            <p>Desarrollo web con cuidado por el detalle y por quien usa el producto.</p>
             <div className="hero-actions">
               <Escribeme className="btn btn-primary btn-lg" />
               <Link to="/cv" className="btn btn-outline btn-lg">Ver mi CV</Link>

@@ -17,7 +17,7 @@ export default function Contact() {
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.35 }}>
       <Helmet>
         <title>Contacto | Sergio Gil</title>
-        <meta name="description" content="Contacto para oportunidades laborales como DevOps Junior." />
+        <meta name="description" content="Contacto con Sergio Gil, desarrollador web y diseñador UX/UI." />
       </Helmet>
 
       <section className="section section-tight">

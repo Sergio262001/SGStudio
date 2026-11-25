@@ -3,7 +3,7 @@ import { PERFIL } from "../data/perfil";
 
 // Contacto en un clic: «Escríbeme» abre el correo con el asunto ya escrito.
 // «Copiar correo» sirve a quien usa Gmail u Outlook en el navegador (sin programa de correo instalado).
-const ASUNTO = "Oportunidad laboral · DevOps Junior";
+const ASUNTO = "Contacto desde tu portafolio";
 
 export const correo = () => PERFIL.contacto.email;
 export const mailto = (asunto = ASUNTO) => `mailto:${correo()}?subject=${encodeURIComponent(asunto)}`;
