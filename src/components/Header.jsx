@@ -27,7 +27,7 @@ export default function Header() {
           <img src={`${import.meta.env.BASE_URL}img/logos/sg-simbolo.png`} alt="" className="brand-simbolo" />
           <span className="brand-texto">
             <strong>{PERFIL.nombre}</strong>
-            <small>Desarrollador web</small>
+            <small>DevOps Junior</small>
           </span>
         </NavLink>
 

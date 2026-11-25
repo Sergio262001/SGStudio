@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Escenaria · Simulación de escenarios</title>
+  <meta name="description" content="Prototipo: compara decisiones moviendo parámetros y ve el resultado al instante." />
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <header class="sitenav">
+    <a class="back-link" href="../../#/proyectos" target="_top" data-solo-fuera>← Portafolio</a>
+    <a class="brand" href="#/inicio" aria-label="Escenaria, ir al inicio">
+      <span class="brand-mark alt" aria-hidden="true"></span>Escenaria
+    </a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="nav-links">Menú</button>
+    <nav aria-label="Principal">
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#/inicio" data-route="inicio">Inicio</a></li>
+        <li><a href="#/panel" data-route="panel">Panel</a></li>
+        <li><a href="#/informe" data-route="informe">Informe</a></li>
+        <li><a href="#/metodologia" data-route="metodologia">Cómo funciona</a></li>
+      </ul>
+    </nav>
+    <a class="btn primary nav-cta" href="#/panel">Abrir el panel</a>
+  </header>
+
+  <div id="contenido">
+    <!-- Página del panel (la aplicación) -->
+    <section id="view-panel" hidden aria-labelledby="h-panel">
+      <div class="topbar">
+        <h1 id="h-panel" tabindex="-1">Panel de escenarios</h1>
+        <p class="sub">Mueve los parámetros y compara hasta 3 escenarios guardados.</p>
+      </div>
+
+      <div class="layout">
+        <aside class="panel" aria-labelledby="h-params">
+          <h2 id="h-params">Parámetros</h2>
+          <div class="presets" role="group" aria-label="Escenarios predefinidos" id="presets"></div>
+          <form id="params" autocomplete="off" onsubmit="return false"></form>
+          <div class="actions">
+            <button type="button" class="primary" id="btn-save">Guardar escenario</button>
+            <button type="button" id="btn-reset">Restablecer</button>
+          </div>
+          <p class="hint" id="save-hint"></p>
+          <a class="btn report-link" href="#/informe">Ver informe →</a>
+        </aside>
+
+        <main id="main" tabindex="-1">
+          <section aria-labelledby="h-kpi">
+            <h2 id="h-kpi" class="sr-only">Resumen del escenario actual</h2>
+            <div class="kpis" id="kpis"></div>
+          </section>
+
+          <section class="panel" aria-labelledby="h-chart">
+            <div class="chart-head">
+              <h2 id="h-chart">Evolución</h2>
+              <div class="controls">
+                <div class="seg" role="group" aria-label="Métrica" id="metrics"></div>
+                <div class="seg" role="group" aria-label="Vista">
+                  <button type="button" data-view="chart" aria-pressed="true">Gráfico</button>
+                  <button type="button" data-view="table" aria-pressed="false">Tabla</button>
+                </div>
+              </div>
+            </div>
+            <div id="legend" class="legend"></div>
+            <div id="chart-wrap"></div>
+            <p id="readout" class="readout" aria-live="polite"></p>
+          </section>
+
+          <section class="panel" aria-labelledby="h-cmp">
+            <h2 id="h-cmp">Comparación</h2>
+            <div class="scroll" id="compare"></div>
+          </section>
+        </main>
+      </div>
+    </section>
+
+    <!-- Páginas informativas (inicio, informe, cómo funciona) -->
+    <main id="view-page" tabindex="-1"></main>
+  </div>
+
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+
+  <script type="module" src="src/site.js"></script>
+</body>
+</html>

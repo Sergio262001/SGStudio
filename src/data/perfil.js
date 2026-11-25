@@ -4,10 +4,10 @@
 
 export const PERFIL = {
   nombre: "Sergio Gil",
-  rol: "Desarrollador web y diseñador UX/UI",
-  frase: "Diseño, desarrollo y publico sitios web que funcionan.",
+  rol: "DevOps Junior · Desarrollador web",
+  frase: "Automatizo, despliego y diseño productos web que funcionan.",
   resumen:
-    "Desarrollador web y diseñador UX/UI en transición a DevOps, con experiencia como webmaster en el sector público. Diseño y desarrollo sitios y tiendas online que publico con Git, GitHub Pages y Firebase.",
+    "Desarrollador web y diseñador UX/UI en transición a DevOps, con experiencia como webmaster en el sector público. Automatizo pruebas y despliegues con GitHub Actions y Docker, y publico mis proyectos con demos en vivo.",
   // Experiencia destacada en la portada (sin «actualmente»: sigue siendo cierta después de terminar)
   actual: { cargo: "Webmaster", lugar: "Ministerio de Salud y Protección Social" },
 
@@ -15,6 +15,7 @@ export const PERFIL = {
     github: "https://github.com/Sergio262001",
     linkedin: "https://www.linkedin.com/in/sergio-gil",
     web: "https://sergio262001.github.io/SGStudio/",
+    repoProyectos: "https://github.com/Sergio262001/portafolio-proyectos",
   },
 
   contacto: {
@@ -26,6 +27,10 @@ export const PERFIL = {
   ubicacion: "Bogotá, Colombia · Presencial, híbrido o remoto",
 
   habilidades: [
+    {
+      grupo: "DevOps y nube (en formación)",
+      items: ["Docker", "GitHub Actions (CI/CD)", "AWS", "Linux y Bash", "Terraform", "Kubernetes", "Argo CD · GitOps", "Prometheus"],
+    },
     {
       grupo: "Portales web",
       items: ["SharePoint", "Gestión de contenidos", "Mantenimiento de sitios institucionales"],
@@ -62,10 +67,12 @@ export const PERFIL = {
         "Diseño y desarrollo de menús digitales con QR para restaurantes, cafés y bares, con panel de administración.",
         "Desarrollo de landing pages, sitios informativos y tiendas online para negocios y marcas personales.",
         "Despliegue en GitHub Pages y Firebase Hosting, con control de versiones en Git.",
+        "Panel administrativo de FreshCo: productos, contenidos, base de datos y WhatsApp.",
       ],
     },
   ],
 
+  // Proyectos de la hoja de vida (sin los prototipos de UX/UI, que sí están en la web)
   proyectosCv: [
     {
       nombre: "Pa'l Toque (pal-toque.com)",
@@ -74,6 +81,10 @@ export const PERFIL = {
     {
       nombre: "FreshCo (freshco-design.com)",
       detalle: "Tienda online de ropa urbana con panel administrativo: productos, contenidos, base de datos y atención por WhatsApp.",
+    },
+    {
+      nombre: "Plataforma de entrega progresiva con GitOps",
+      detalle: "Pipeline CI/CD en GitHub Actions con pruebas, políticas OPA, SBOM y firma de imágenes; despliegue canary con rollback automático (Argo Rollouts) e infraestructura en Terraform. Incluye Canary Lab, simulador web del flujo.",
     },
     {
       nombre: "Sitios para clientes",
@@ -104,6 +115,35 @@ export const PERFIL = {
     { etapa: "Diseño gráfico y UX/UI", texto: "Diseñar interfaces claras y accesibles.", anio: "2024–2025" },
     { etapa: "Desarrollo web freelance", texto: "Construir y publicar sitios para clientes reales.", anio: "Actualidad" },
     { etapa: "Webmaster · Ministerio de Salud", texto: "Mantener un portal público de alcance nacional.", anio: "2026" },
-    { etapa: "En transición a DevOps", texto: "Formándome en la nube con el curso AWS Cloud Practitioner.", anio: "2026" },
+    { etapa: "Iniciando en DevOps", texto: "Automatizar pruebas y despliegues, y formarme en la nube con AWS.", anio: "2026" },
   ],
+};
+
+// Hoja de vida (página CV, PDF público y CV sencillo): DevOps y desarrollo web, sin UX/UI.
+// Inicio, Sobre mí y Proyectos sí muestran el trabajo de UX/UI.
+const esUx = (texto) => /UX/.test(texto);
+export const CV = {
+  rol: PERFIL.rol,
+  resumen:
+    "Desarrollador web en transición a DevOps, con experiencia como webmaster en el sector público. Automatizo pruebas y despliegues con GitHub Actions y Docker, y publico sitios y tiendas online con Git, GitHub Pages y Firebase.",
+  habilidades: [
+    ...PERFIL.habilidades.filter((h) => !esUx(h.grupo)),
+    { grupo: "Diseño gráfico", items: ["Figma", "Adobe Ps · Ai · Pr"] },
+  ],
+  // FreshCo ya aparece en Proyectos: en la experiencia no se repite (así cabe en una hoja).
+  experiencia: PERFIL.experiencia.map((e) =>
+    esUx(e.cargo)
+      ? {
+          ...e,
+          cargo: "Desarrollador web",
+          logros: [
+            "Diseño y desarrollo de menús digitales con QR y panel de administración para restaurantes y cafés.",
+            "Desarrollo de landing pages, sitios informativos y tiendas online para negocios y marcas personales.",
+            "Despliegue en GitHub Pages y Firebase Hosting, con control de versiones en Git.",
+          ],
+        }
+      : e
+  ),
+  proyectos: PERFIL.proyectosCv,
+  cursos: PERFIL.cursos.filter((c) => !esUx(c.titulo)),
 };

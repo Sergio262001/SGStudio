@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Escribeme } from "../components/Correo";
-import { PERFIL } from "../data/perfil";
+import { CV as HOJA, PERFIL } from "../data/perfil";
 
 const PDF = `${import.meta.env.BASE_URL}cv/CV-Sergio-Gil-DevOps-Junior.pdf`;
 const sinProtocolo = (url) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
@@ -21,8 +21,8 @@ export default function CV() {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.35 }}>
       <Helmet>
-        <title>CV · Sergio Gil</title>
-        <meta name="description" content={`Hoja de vida de ${PERFIL.nombre}: ${PERFIL.rol}.`} />
+        <title>CV · Sergio Gil · DevOps Junior</title>
+        <meta name="description" content={`Hoja de vida de ${PERFIL.nombre}: ${HOJA.rol}.`} />
       </Helmet>
 
       <section className="section section-tight">
@@ -30,7 +30,7 @@ export default function CV() {
           <div className="cv-toolbar no-print">
             <h1 className="sr-only">Hoja de vida</h1>
             {/* PDF real (funciona bien en celulares); se genera desde esta misma página, sin el teléfono */}
-            <a className="btn btn-primary btn-lg" href={PDF} download="CV Sergio Gil.pdf">
+            <a className="btn btn-primary btn-lg" href={PDF} download="CV Sergio Gil - DevOps Junior.pdf">
               ⬇ Descargar PDF
             </a>
             <button type="button" className="btn btn-outline btn-lg" onClick={() => window.print()}>
@@ -42,19 +42,19 @@ export default function CV() {
           <article className="cv" aria-label={`Hoja de vida de ${PERFIL.nombre}`}>
             <header className="cv-head">
               <h2 className="cv-name">{PERFIL.nombre}</h2>
-              <p className="cv-role">{PERFIL.rol}</p>
+              <p className="cv-role">{HOJA.rol}</p>
               <p className="cv-contact">{datos.join("  ·  ")}</p>
             </header>
 
             <section>
               <h3>Perfil</h3>
-              <p>{PERFIL.resumen}</p>
+              <p>{HOJA.resumen}</p>
             </section>
 
             <section>
               <h3>Habilidades</h3>
               <dl className="cv-skills">
-                {PERFIL.habilidades.map((h) => (
+                {HOJA.habilidades.map((h) => (
                   <div key={h.grupo}>
                     <dt>{h.grupo}</dt>
                     <dd>{h.items.join(" · ")}</dd>
@@ -70,18 +70,18 @@ export default function CV() {
             <section>
               <h3>Proyectos</h3>
               <ul className="cv-list">
-                {PERFIL.proyectosCv.map((p) => (
+                {HOJA.proyectos.map((p) => (
                   <li key={p.nombre}>
                     <strong>{p.nombre}.</strong> {p.detalle}
                   </li>
                 ))}
               </ul>
-              <p className="cv-note">Portafolio: {sinProtocolo(links.web)}</p>
+              <p className="cv-note">Demos y código: {sinProtocolo(links.web)} · {sinProtocolo(links.repoProyectos)}</p>
             </section>
 
             <section>
               <h3>Experiencia</h3>
-              {PERFIL.experiencia.map((e) => (
+              {HOJA.experiencia.map((e) => (
                 <div key={e.cargo} className="cv-item">
                   <div className="cv-item-head">
                     <strong>{e.cargo}</strong>
@@ -112,7 +112,7 @@ export default function CV() {
 
             <section>
               <h3>Cursos</h3>
-              {PERFIL.cursos.map((c) => (
+              {HOJA.cursos.map((c) => (
                 <div key={c.titulo} className="cv-item cv-item-row">
                   <div>
                     <strong>{c.titulo}</strong>

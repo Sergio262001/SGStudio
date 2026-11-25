@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
+import CaseStudy from "./pages/CaseStudy";
+import Ver from "./pages/Ver";
 import CV from "./pages/CV";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -42,9 +44,8 @@ export default function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/proyectos" element={<Projects />} />
-            {/* Los casos de estudio y el visor de prototipos se retiraron: los enlaces viejos llevan a Proyectos. */}
-            <Route path="/proyectos/:id" element={<Navigate to="/proyectos" replace />} />
-            <Route path="/ver/:id" element={<Navigate to="/proyectos" replace />} />
+            <Route path="/proyectos/:id" element={<CaseStudy />} />
+            <Route path="/ver/:id" element={<Ver />} />
             <Route path="/cv" element={<CV />} />
             <Route path="/casos" element={<Navigate to="/proyectos" replace />} />
             {/* Servicios se retiró (un solo público: reclutadores). Los enlaces viejos llevan a Contacto. */}
